@@ -7,6 +7,8 @@ file(GLOB SOURCE_FILES
 # Make an object file
 add_library(data_products SHARED ${SOURCE_FILES})
 
+add_library(DataProducts::data_products ALIAS data_products)
+
 # Include directories
 target_include_directories(data_products
     PUBLIC
