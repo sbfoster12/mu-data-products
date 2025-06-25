@@ -2,6 +2,7 @@
 
 # Get absolute path to the root of the repo (assuming this script is in scripts/)
 export DATA_PRODUCTS_PATH="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export DATA_PRODUCTS_CMAKE_PREFIX_PATH="$DATA_PRODUCTS_PATH/install"
 
 # Function to remove a path from an environment variable
 remove_from_path() {
@@ -25,9 +26,10 @@ remove_from_path() {
 remove_from_path "ROOT_INCLUDE_PATH" "$DATA_PRODUCTS_PATH/install/include"
 remove_from_path "LD_LIBRARY_PATH" "$DATA_PRODUCTS_PATH/install/lib"
 remove_from_path "DYLD_LIBRARY_PATH" "$DATA_PRODUCTS_PATH/install/lib"
-remove_from_path "CMAKE_PREFIX_PATH" "$CMAKE_PREFIX_PATH/install"
+remove_from_path "CMAKE_PREFIX_PATH" "$DATA_PRODUCTS_CMAKE_PREFIX_PATH"
 
 echo "Environment paths removed for $DATA_PRODUCTS_PATH"
 
 # Finally unset the UNPACKERS_PATH variable itself
 unset UNPACKERS_PATH
+unset DATA_PRODUCTS_CMAKE_PREFIX_PATH
