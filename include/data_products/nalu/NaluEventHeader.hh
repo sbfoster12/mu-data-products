@@ -1,7 +1,7 @@
 #ifndef NALUEVENTHEADER_HH   
 #define NALUEVENTHEADER_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

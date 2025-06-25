@@ -1,4 +1,4 @@
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 using namespace dataProducts;
 

@@ -1,7 +1,7 @@
 #ifndef NALUPACKET_HH   
 #define NALUPACKET_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

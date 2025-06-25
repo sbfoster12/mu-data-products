@@ -1,4 +1,4 @@
-#include "nalu/NaluPacketFooter.hh"
+#include "data_products/nalu/NaluPacketFooter.hh"
 
 using namespace dataProducts;
 

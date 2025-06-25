@@ -1,7 +1,7 @@
 #ifndef NALUODB_HH 
 #define NALUODB_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

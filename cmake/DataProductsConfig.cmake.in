@@ -1,0 +1,4 @@
+@PACKAGE_INIT@
+
+include("${CMAKE_CURRENT_LIST_DIR}/DataProductsTargets.cmake")
+message(STATUS "DataProducts loaded from ${CMAKE_CURRENT_LIST_DIR}")

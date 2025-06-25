@@ -1,7 +1,7 @@
 #ifndef NALUPACKETFOOTER_HH   
 #define NALUPACKETFOOTER_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

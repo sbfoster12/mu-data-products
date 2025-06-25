@@ -1,4 +1,4 @@
-#include "nalu/NaluEventHeader.hh"
+#include "data_products/nalu/NaluEventHeader.hh"
 
 using namespace dataProducts;
 

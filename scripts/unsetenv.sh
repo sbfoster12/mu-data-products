@@ -25,6 +25,7 @@ remove_from_path() {
 remove_from_path "ROOT_INCLUDE_PATH" "$DATA_PRODUCT_PATH/install/include"
 remove_from_path "LD_LIBRARY_PATH" "$DATA_PRODUCT_PATH/install/lib"
 remove_from_path "DYLD_LIBRARY_PATH" "$DATA_PRODUCT_PATH/install/lib"
+remove_from_path "CMAKE_PREFIX_PATH" "$CMAKE_PREFIX_PATH/install"
 
 # Remove nlohmann_json paths if they were added
 NLOHMANN_PATHS=$(pkg-config --cflags nlohmann_json 2>/dev/null | sed 's/-I//g')
@@ -34,7 +35,7 @@ if [ ! -z "$NLOHMANN_PATHS" ]; then
     done
 fi
 
-echo "Environment paths removed for $UNPACKER_PATH"
+echo "Environment paths removed for $DATA_PRODUCT_PATH"
 
 # Finally unset the UNPACKER_PATH variable itself
 unset UNPACKER_PATH

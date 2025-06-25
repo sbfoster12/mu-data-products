@@ -1,4 +1,4 @@
-#include "nalu/NaluWaveform.hh"
+#include "data_products/nalu/NaluWaveform.hh"
 #include <numeric>
 
 using namespace dataProducts;

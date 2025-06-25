@@ -1,6 +1,6 @@
-project(mu-data-products)
-
 cmake_minimum_required(VERSION 3.13)
+
+project(mu-data-products VERSION 0.0.0)
 
 # for debug
 # set(CMAKE_BUILD_TYPE RelWithDebInfo)
@@ -15,7 +15,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_OSX_ARCHITECTURES "arm64")
 
 # Create installation directories
-set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install")
+if(CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+    set(CMAKE_INSTALL_PREFIX "${CMAKE_SOURCE_DIR}/install")
+endif()
 
 # Set the path for where to look for the libraries of the installed target
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")

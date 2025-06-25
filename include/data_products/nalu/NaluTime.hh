@@ -1,7 +1,7 @@
 #ifndef NALUTIME_HH   
 #define NALUTIME_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

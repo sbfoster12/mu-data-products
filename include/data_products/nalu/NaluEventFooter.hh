@@ -1,7 +1,7 @@
 #ifndef NALUEVENTFOOTER_HH   
 #define NALUEVENTFOOTER_HH
 
-#include "common/DataProduct.hh"
+#include "data_products/common/DataProduct.hh"
 
 namespace dataProducts {
 

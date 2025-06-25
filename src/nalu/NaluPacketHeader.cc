@@ -1,4 +1,4 @@
-#include "nalu/NaluPacketHeader.hh"
+#include "data_products/nalu/NaluPacketHeader.hh"
 
 using namespace dataProducts;
 
