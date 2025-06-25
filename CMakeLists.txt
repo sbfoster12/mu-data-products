@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.13)
 
-project(mu-data-products VERSION 0.0.0)
+project(mu-data-products VERSION 0.0.0 LANGUAGES CXX)
 
 # for debug
 # set(CMAKE_BUILD_TYPE RelWithDebInfo)

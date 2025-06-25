@@ -1,7 +1,7 @@
 # Glob the source files together
 file(GLOB SOURCE_FILES
-    common/*.cc
-    nalu/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/nalu/*.cc
 )
 
 # Make an object file
