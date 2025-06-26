@@ -1,35 +1,35 @@
-#ifndef NALUPACKETFOOTER_HH   
-#define NALUPACKETFOOTER_HH
+#ifndef NALU_PACKETFOOTER_HH
+#define NALU_PACKETFOOTER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluPacketFooter
+     * @class PacketFooter
      * @brief Represents the footer information for a NALU packet.
      *
      * Inherits from DataProduct.
      */
-    class NaluPacketFooter : public DataProduct {
+    class PacketFooter : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluPacketFooter();
+            PacketFooter();
 
             /**
              * @brief Constructor with event index.
              * @param parser_index Parser index
              * @param packet_footer Packet footer
              */
-            NaluPacketFooter(uint32_t parser_index, uint32_t packet_footer);
+            PacketFooter(uint32_t parser_index, uint32_t packet_footer);
 
             /**
              * @brief Destructor.
              */
-            ~NaluPacketFooter();
+            ~PacketFooter();
 
             /**
              * @brief Parser index.
@@ -47,20 +47,20 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluPacketFooter.
+             * @brief Display the contents of the PacketFooter.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluPacketFooter,1)
+            ClassDefOverride(PacketFooter,1)
     };
 
     /**
-     * @typedef NaluPacketFooterCollection
-     * @brief A collection (vector) of NaluPacketFooter objects.
+     * @typedef PacketFooterCollection
+     * @brief A collection (vector) of PacketFooter objects.
      */
-    typedef std::vector<NaluPacketFooter> NaluPacketFooterCollection;
+    typedef std::vector<PacketFooter> PacketFooterCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUPACKETFOOTER_HH
+#endif // NALU_PACKETFOOTER_HH

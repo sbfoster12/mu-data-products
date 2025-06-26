@@ -1,6 +1,6 @@
 #include "data_products/common/DataProduct.hh"
 
-using namespace dataProducts;
+using namespace data_products::common;
 
 DataProduct::DataProduct() {}
     

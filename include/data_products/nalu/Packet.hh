@@ -1,29 +1,29 @@
-#ifndef NALUPACKET_HH   
-#define NALUPACKET_HH
+#ifndef NALU_PACKET_HH
+#define NALU_PACKET_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluPacket
+     * @class Packet
      * @brief Represents the nalu packet for a NALU event.
      *
      * Inherits from DataProduct.
      */
-    class NaluPacket : public DataProduct {
+    class Packet : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluPacket();
+            Packet();
 
             /**
              * @brief Constructor with event index.
              * @param event_index Index of the event.
              */
-            NaluPacket(
+            Packet(
                  uint64_t channel_num
                 ,uint64_t window_position
                 ,std::vector<short> trace
@@ -32,7 +32,7 @@ namespace dataProducts {
             /**
              * @brief Destructor.
              */
-            ~NaluPacket();
+            ~Packet();
 
             /**
              * @brief Channel of this packet.
@@ -50,20 +50,20 @@ namespace dataProducts {
             std::vector<short> trace;
 
             /**
-             * @brief Display the contents of the NaluPacket.
+             * @brief Display the contents of the Packet.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluPacket,1)
+            ClassDefOverride(Packet,1)
     };
 
     /**
-     * @typedef NaluPacketCollection
-     * @brief A collection (vector) of NaluPacket objects.
+     * @typedef PacketCollection
+     * @brief A collection (vector) of Packet objects.
      */
-    typedef std::vector<NaluPacket> NaluPacketCollection;
+    typedef std::vector<Packet> PacketCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUPACKET_HH
+#endif // NALU_PACKET_HH

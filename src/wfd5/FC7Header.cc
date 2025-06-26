@@ -1,8 +1,8 @@
-#include "data_products/wfd5/WFD5FC7Header.hh"
+#include "data_products/wfd5/FC7Header.hh"
 
-using namespace dataProducts;
+using namespace data_products::wfd5;
 
-WFD5FC7Header::WFD5FC7Header()
+FC7Header::FC7Header()
     : DataProduct(),
     crateNum(0),
     amcNum(0),
@@ -19,7 +19,7 @@ WFD5FC7Header::WFD5FC7Header()
     patchRevision(0)
 {};
 
-WFD5FC7Header::WFD5FC7Header(unsigned int crateNumArg
+FC7Header::FC7Header(unsigned int crateNumArg
     ,unsigned int amcNumArg
     ,unsigned int triggerNumArg
     ,unsigned long clockCounterArg
@@ -48,12 +48,12 @@ WFD5FC7Header::WFD5FC7Header(unsigned int crateNumArg
     patchRevision(0)
 {};
 
-WFD5FC7Header::~WFD5FC7Header() {};
+FC7Header::~FC7Header() {};
 
-void WFD5FC7Header::Show() const {
+void FC7Header::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "WFD5FC7Header:" << std::endl;
+    oss << "FC7Header:" << std::endl;
     oss << "    crateNum: " << crateNum  << std::endl;
     oss << "    amcNum: " << amcNum  << std::endl;
     oss << "    triggerNum: " << triggerNum  << std::endl;

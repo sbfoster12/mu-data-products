@@ -1,8 +1,8 @@
-#include "data_products/wfd5/WFD5WFD5Header.hh"
+#include "data_products/wfd5/WFD5Header.hh"
 
-using namespace dataProducts;
+using namespace data_products::wfd5;
 
-WFD5WFD5Header::WFD5WFD5Header()
+WFD5Header::WFD5Header()
     : DataProduct(),
     crateNum(0),
     amcNum(0),
@@ -18,7 +18,7 @@ WFD5WFD5Header::WFD5WFD5Header()
     patchRevision(0)
 {}
 
-WFD5WFD5Header::WFD5WFD5Header(
+WFD5Header::WFD5Header(
     unsigned int crateNumArg
     ,unsigned int amcNumArg
     ,unsigned int triggerNumArg
@@ -47,12 +47,12 @@ WFD5WFD5Header::WFD5WFD5Header(
     patchRevision(patchRevisionArg)
 {}
 
-WFD5WFD5Header::~WFD5WFD5Header() {};
+WFD5Header::~WFD5Header() {};
 
-void WFD5WFD5Header::Show() const {
+void WFD5Header::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "WFD5WFD5Header: " << crateNum << std::endl;
+    oss << "WFD5Header: " << crateNum << std::endl;
     oss << "    crateNum: " << crateNum << std::endl;
     oss << "    amcNum: " << amcNum << std::endl;
     oss << "    triggerNum: " << triggerNum << std::endl;

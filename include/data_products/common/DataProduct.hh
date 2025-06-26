@@ -13,7 +13,7 @@
 #include <TRef.h>
 #include <TRefArray.h>
 
-namespace dataProducts {
+namespace data_products::common {
 
     class DataProduct : public TObject {
 
@@ -30,6 +30,6 @@ namespace dataProducts {
 
     typedef std::vector<DataProduct> DataProductCollection;
     typedef std::vector<std::shared_ptr<DataProduct>> DataProductPtrCollection;
-}
+} // namespace data_products::common
 
 #endif // DATAPRODUCT_HH

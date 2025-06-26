@@ -1,29 +1,29 @@
-#ifndef NALUEVENTHEADER_HH   
-#define NALUEVENTHEADER_HH
+#ifndef EVENTHEADER_HH   
+#define EVENTHEADER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluEventHeader
+     * @class EventHeader
      * @brief Represents the header information for a NALU event.
      *
      * Inherits from DataProduct. Stores metadata such as the event index and number of packets.
      */
-    class NaluEventHeader : public DataProduct {
+    class EventHeader : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluEventHeader();
+            EventHeader();
 
             /**
              * @brief Constructor with event index.
              * @param ...
              */
-            NaluEventHeader(
+            EventHeader(
                  uint16_t event_header
                 ,uint16_t event_info
                 ,uint32_t event_index
@@ -36,7 +36,7 @@ namespace dataProducts {
             /**
              * @brief Destructor.
              */
-            ~NaluEventHeader();
+            ~EventHeader();
 
             /**
              * @brief Event header.
@@ -84,20 +84,20 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluEventHeader.
+             * @brief Display the contents of the EventHeader.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluEventHeader,1)
+            ClassDefOverride(EventHeader,1)
     };
 
     /**
-     * @typedef NaluEventHeaderCollection
-     * @brief A collection (vector) of NaluEventHeader objects.
+     * @typedef EventHeaderCollection
+     * @brief A collection (vector) of EventHeader objects.
      */
-    typedef std::vector<NaluEventHeader> NaluEventHeaderCollection;
+    typedef std::vector<EventHeader> EventHeaderCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUEVENTHEADER_HH
+#endif // EVENTHEADER_HH

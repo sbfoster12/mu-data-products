@@ -1,9 +1,9 @@
-#include "data_products/wfd5/WFD5Waveform.hh"
+#include "data_products/wfd5/Waveform.hh"
 #include <numeric>
 
-using namespace dataProducts;
+using namespace data_products::wfd5;
 
-WFD5Waveform::WFD5Waveform()
+Waveform::Waveform()
     : DataProduct(),
     crateNum(0),
     amcNum(0), 
@@ -22,7 +22,7 @@ WFD5Waveform::WFD5Waveform()
     detectorNum(0)
 {}
 
-WFD5Waveform::WFD5Waveform(int crateNumArg
+Waveform::Waveform(int crateNumArg
     ,int amcNumArg
     ,int channelTagArg
     ,int eventNumArg
@@ -60,7 +60,7 @@ WFD5Waveform::WFD5Waveform(int crateNumArg
     ,digitizationFrequency(1.0)
 {}
 
-WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
+Waveform::Waveform(Waveform* w) : DataProduct()
     ,runNum(w->runNum)
     ,subRunNum(w->subRunNum)
     ,crateNum(w->crateNum)
@@ -86,12 +86,12 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
 {
 }
 
-WFD5Waveform::~WFD5Waveform() {}
+Waveform::~Waveform() {}
 
-void WFD5Waveform::Show() const {
+void Waveform::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "WFD5Waveform:" << std::endl;
+    oss << "Waveform:" << std::endl;
     oss << "    runNum: " << runNum << std::endl;
     oss << "    subRunNum: " << subRunNum << std::endl;
     oss << "    crateNum: " << crateNum << std::endl;

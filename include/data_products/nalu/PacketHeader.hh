@@ -1,29 +1,29 @@
-#ifndef NALUPACKETHEADER_HH   
-#define NALUPACKETHEADER_HH
+#ifndef NALU_PACKETHEADER_HH   
+#define NALU_PACKETHEADER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluPacketHeader
+     * @class PacketHeader
      * @brief Represents the header information for a NALU packet.
      *
      * Inherits from DataProduct.
      */
-    class NaluPacketHeader : public DataProduct {
+    class PacketHeader : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluPacketHeader();
+            PacketHeader();
 
             /**
              * @brief Constructor with event index.
              * @param packet_header
              */
-            NaluPacketHeader(
+            PacketHeader(
                  uint16_t packet_header
                 ,uint16_t packet_info
                 ,uint16_t channel
@@ -35,7 +35,7 @@ namespace dataProducts {
             /**
              * @brief Destructor.
              */
-            ~NaluPacketHeader();
+            ~PacketHeader();
 
             /**
              * @brief Packet header.
@@ -73,20 +73,20 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluPacketHeader.
+             * @brief Display the contents of the PacketHeader.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluPacketHeader,1)
+            ClassDefOverride(PacketHeader,1)
     };
 
     /**
-     * @typedef NaluPacketHeaderCollection
-     * @brief A collection (vector) of NaluPacketHeader objects.
+     * @typedef PacketHeaderCollection
+     * @brief A collection (vector) of PacketHeader objects.
      */
-    typedef std::vector<NaluPacketHeader> NaluPacketHeaderCollection;
+    typedef std::vector<PacketHeader> PacketHeaderCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUPACKETHEADER_HH
+#endif // NALU_PACKETHEADER_HH

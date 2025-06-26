@@ -1,13 +1,13 @@
-#include "data_products/nalu/NaluTime.hh"
+#include "data_products/nalu/Time.hh"
 
-using namespace dataProducts;
+using namespace data_products::nalu;
 
 /**
- * @brief Default constructor for NaluTime.
+ * @brief Default constructor for Time.
  *
  * Initializes the event footer to 0.
  */
-NaluTime::NaluTime()
+Time::Time()
     : DataProduct()
     ,collection_cycle_index(0)
     ,collection_cycle_timestamp_ns(0)
@@ -24,7 +24,7 @@ NaluTime::NaluTime()
  *
  * @param
  */
-NaluTime::NaluTime(
+Time::Time(
      uint64_t collection_cycle_index_arg
     ,uint64_t collection_cycle_timestamp_ns_arg
     ,double udp_time_arg
@@ -46,19 +46,19 @@ NaluTime::NaluTime(
 {}
 
 /**
- * @brief Destructor for NaluTime.
+ * @brief Destructor for Time.
  */
-NaluTime::~NaluTime() {}
+Time::~Time() {}
 
 /**
  * @brief Make a string of the contents of the class
  *
  * Displays the event footer value in hexadecimal format.
  */
-std::string NaluTime::String() const {
+std::string Time::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "NaluTime: " << std::endl;
+    oss << "Time: " << std::endl;
     oss << "    collection_cycle_index:         " << collection_cycle_index << std::endl;
     oss << "    collection_cycle_timestamp_ns:  " << collection_cycle_timestamp_ns << std::endl;
     oss << "    udp_time:                       " << udp_time << std::endl;
@@ -71,10 +71,10 @@ std::string NaluTime::String() const {
 }
 
 /**
- * @brief Print the contents of the NaluTime to standard output.
+ * @brief Print the contents of the Time to standard output.
  *
  * Displays the class as a string
  */
-void NaluTime::Show() const { 
+void Time::Show() const { 
     std::cout << this->String();
 }

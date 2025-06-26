@@ -1,13 +1,13 @@
-#include "data_products/nalu/NaluEventFooter.hh"
+#include "data_products/nalu/EventFooter.hh"
 
-using namespace dataProducts;
+using namespace data_products::nalu;
 
 /**
- * @brief Default constructor for NaluEventFooter.
+ * @brief Default constructor for EventFooter.
  *
  * Initializes the event footer to 0.
  */
-NaluEventFooter::NaluEventFooter()
+EventFooter::EventFooter()
     : DataProduct(),
       event_footer(0)
 {}
@@ -17,7 +17,7 @@ NaluEventFooter::NaluEventFooter()
  *
  * @param event_footer_arg 32-bit unsigned integer representing the event footer value.
  */
-NaluEventFooter::NaluEventFooter(
+EventFooter::EventFooter(
     uint32_t event_footer_arg
     )
     : DataProduct(),
@@ -25,28 +25,28 @@ NaluEventFooter::NaluEventFooter(
 {}
 
 /**
- * @brief Destructor for NaluEventFooter.
+ * @brief Destructor for EventFooter.
  */
-NaluEventFooter::~NaluEventFooter() {}
+EventFooter::~EventFooter() {}
 
 /**
  * @brief Make a string of the contents of the class
  *
  * Displays the event footer value in hexadecimal format.
  */
-std::string NaluEventFooter::String() const {
+std::string EventFooter::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "NaluEventFooter: " << std::endl;
+    oss << "data_products::nalu::EventFooter: " << std::endl;
     oss << "    event_footer: " << std::hex << "0x" << event_footer << std::endl;
     return oss.str();
 }
 
 /**
- * @brief Print the contents of the NaluEventFooter to standard output.
+ * @brief Print the contents of the EventFooter to standard output.
  *
  * Displays the class as a string
  */
-void NaluEventFooter::Show() const { 
+void EventFooter::Show() const { 
     std::cout << this->String();
 }

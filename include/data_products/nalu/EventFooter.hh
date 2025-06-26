@@ -1,34 +1,34 @@
-#ifndef NALUEVENTFOOTER_HH   
-#define NALUEVENTFOOTER_HH
+#ifndef NALU_EVENTFOOTER_HH
+#define NALU_EVENTFOOTER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluEventFooter
+     * @class EventFooter
      * @brief Represents the footer information for a NALU event.
      *
      * Inherits from DataProduct. 
      */
-    class NaluEventFooter : public DataProduct {
+    class EventFooter : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluEventFooter();
+            EventFooter();
 
             /**
              * @brief Constructor with event_footer index.
              * @param event_footer 2 byte word in the footer
              */
-            NaluEventFooter(uint32_t event_footer);
+            EventFooter(uint32_t event_footer);
 
             /**
              * @brief Destructor.
              */
-            ~NaluEventFooter();
+            ~EventFooter();
 
             /**
              * @brief Index of the event.
@@ -41,20 +41,20 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluEventFooter.
+             * @brief Display the contents of the EventFooter.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluEventFooter,1)
+            ClassDefOverride(EventFooter,1)
     };
 
     /**
-     * @typedef NaluEventFooterCollection
-     * @brief A collection (vector) of NaluEventFooter objects.
+     * @typedef EventFooterCollection
+     * @brief A collection (vector) of EventFooter objects.
      */
-    typedef std::vector<NaluEventFooter> NaluEventFooterCollection;
+    typedef std::vector<EventFooter> EventFooterCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUEVENTFOOTER_HH
+#endif // NALU_EVENTFOOTER_HH

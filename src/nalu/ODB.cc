@@ -1,23 +1,23 @@
-#include "data_products/nalu/NaluODB.hh"
+#include "data_products/nalu/ODB.hh"
 
-using namespace dataProducts;
+using namespace data_products::nalu;
 
-NaluODB::NaluODB()
+ODB::ODB()
     : DataProduct()
     ,odb_string("")
 {}
 
-NaluODB::NaluODB(std::string odb_string_arg)
+ODB::ODB(std::string odb_string_arg)
     : DataProduct()
     ,odb_string(odb_string_arg)
 {}
 
-NaluODB::~NaluODB() {}
+ODB::~ODB() {}
 
-void NaluODB::Show() const {
+void ODB::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "NaluODB:" << std::endl;
+    oss << "ODB:" << std::endl;
     oss << odb_string << std::endl;
     oss << std::endl;
     oss << std::endl;

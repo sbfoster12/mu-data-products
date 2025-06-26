@@ -1,36 +1,35 @@
-#ifndef NALUWAVEFORM_HH 
-#define NALUWAVEFORM_HH
+#ifndef NALU_WAVEFORM_HH 
+#define NALU_WAVEFORM_HH
 
-#include "data_products/nalu/NaluPacket.hh"
+#include "data_products/nalu/Packet.hh"
 
-namespace dataProducts {
-
+namespace data_products::nalu {
 
     /**
-     * @class NaluWaveform
+     * @class Waveform
      * @brief Represents the waveform information for a NALU event.
      *
      * Inherits from DataProduct. Stores the waveforms.
      */
-    class NaluWaveform : public DataProduct {
+    class Waveform : public data_products::common::DataProduct {
 
         public:
 
             /**
              * @brief Default constructor.
              */
-            NaluWaveform();
+            Waveform();
 
             /**
-             * @brief Constructor with nalu packets.
-             * @param nalu_packets A collection of nalu packets
+             * @brief Constructor with packet collection.
+             * @param packets A collection of packets
              */
-            NaluWaveform(NaluPacketCollection nalu_packets);
+            Waveform(PacketCollection packets);
 
             /**
              * @brief Destructor.
              */
-            ~NaluWaveform();
+            ~Waveform();
 
             /**
              * @brief Index of the event.
@@ -48,21 +47,21 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluHeader.
+             * @brief Display the contents of the Waveform.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluWaveform,1)
+            ClassDefOverride(Waveform,1)
 
     };
 
     /**
-     * @typedef NaluWaveformCollection
-     * @brief A collection (vector) of NaluWaveform objects.
+     * @typedef WaveformCollection
+     * @brief A collection (vector) of Waveform objects.
      */
-    typedef std::vector<NaluWaveform> NaluWaveformCollection;
+    typedef std::vector<Waveform> WaveformCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUWAVEFORM_HH
+#endif // NALU_WAVEFORM_HH

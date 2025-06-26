@@ -1,29 +1,29 @@
-#ifndef NALUTIME_HH   
-#define NALUTIME_HH
+#ifndef NALU_TIME_HH   
+#define NALU_TIME_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::nalu {
 
     /**
-     * @class NaluTime
+     * @class Time
      * @brief Represents the footer information for a NALU event.
      *
      * Inherits from DataProduct. 
      */
-    class NaluTime : public DataProduct {
+    class Time : public data_products::common::DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            NaluTime();
+            Time();
 
             /**
              * @brief Constructor with event_footer index.
              * @param event_footer 2 byte word in the footer
              */
-            NaluTime(
+            Time(
                  uint64_t collection_cycle_index
                 ,uint64_t collection_cycle_timestamp_ns
                 ,double udp_time
@@ -37,7 +37,7 @@ namespace dataProducts {
             /**
              * @brief Destructor.
              */
-            ~NaluTime();
+            ~Time();
 
             /**
              * @brief Collection cycle index
@@ -85,20 +85,20 @@ namespace dataProducts {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the NaluTime.
+             * @brief Display the contents of the Time.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(NaluTime,1)
+            ClassDefOverride(Time,1)
     };
 
     /**
-     * @typedef NaluTimeCollection
-     * @brief A collection (vector) of NaluTime objects.
+     * @typedef TimeCollection
+     * @brief A collection (vector) of Time objects.
      */
-    typedef std::vector<NaluTime> NaluTimeCollection;
+    typedef std::vector<Time> TimeCollection;
 
-} // namespace dataProducts
+} // namespace data_products::nalu
 
-#endif // NALUTIME_HH
+#endif // NALU_TIME_HH

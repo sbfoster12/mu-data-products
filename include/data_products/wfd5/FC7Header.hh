@@ -1,16 +1,16 @@
-#ifndef WFD5FC7HEADER_HH
-#define WFD5FC7HEADER_HH
+#ifndef WFD5_FC7HEADER_HH
+#define WFD5_FC7HEADER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace dataProducts {
+namespace data_products::wfd5 {
 
-    class WFD5FC7Header : public DataProduct {
+    class FC7Header : public data_products::common::DataProduct {
 
         public:
-            WFD5FC7Header();
+            FC7Header();
 
-            WFD5FC7Header(unsigned int crateNumArg
+            FC7Header(unsigned int crateNumArg
                 ,unsigned int amcNumArg
                 ,unsigned int triggerNumArg
                 ,unsigned long clockCounterArg
@@ -25,7 +25,7 @@ namespace dataProducts {
                 ,unsigned patchRevisionArg);
 
             //Destructor
-            ~WFD5FC7Header();
+            ~FC7Header();
 
             //member variables
 
@@ -66,12 +66,12 @@ namespace dataProducts {
 
             void Show() const override;
 
-            ClassDefOverride(WFD5FC7Header,1)
+            ClassDefOverride(FC7Header,1)
 
     };
 
-    typedef std::vector<WFD5FC7Header> WFD5FC7HeaderCollection;
+    typedef std::vector<FC7Header> FC7HeaderCollection;
 
-}
+} // namespace data_products::wfd5
 
-#endif // WFD5FC7HEADER_HH
+#endif // WFD5_FC7HEADER_HH

@@ -1,8 +1,8 @@
-#include "data_products/nalu/NaluPacketHeader.hh"
+#include "data_products/nalu/PacketHeader.hh"
 
-using namespace dataProducts;
+using namespace data_products::nalu;
 
-NaluPacketHeader::NaluPacketHeader()
+PacketHeader::PacketHeader()
     : DataProduct()
     ,packet_header(0)
     ,packet_info(0)
@@ -12,7 +12,7 @@ NaluPacketHeader::NaluPacketHeader()
     ,window_position(0)
 {}
 
-NaluPacketHeader::NaluPacketHeader(
+PacketHeader::PacketHeader(
      uint16_t packet_header_arg
     ,uint16_t packet_info_arg
     ,uint16_t channel_arg
@@ -29,12 +29,12 @@ NaluPacketHeader::NaluPacketHeader(
     ,window_position(window_position_arg)
 {}
 
-NaluPacketHeader::~NaluPacketHeader() {};
+PacketHeader::~PacketHeader() {};
 
-std::string NaluPacketHeader::String() const {
+std::string PacketHeader::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "NaluPacketHeader: " << std::endl;
+    oss << "PacketHeader: " << std::endl;
     oss << "    packet_header:          " << std::hex << std::setw(4) << std::setfill('0') << packet_header << std::endl;
     oss << "    packet_info:            " << std::dec << packet_info << std::endl;
     oss << "    channel:                " << std::dec << channel << std::endl;
@@ -44,6 +44,6 @@ std::string NaluPacketHeader::String() const {
     return oss.str();
 }
 
-void NaluPacketHeader::Show() const { 
+void PacketHeader::Show() const { 
     std::cout << this->String();
 }
