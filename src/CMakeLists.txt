@@ -1,6 +1,7 @@
 # Glob the source files together
 file(GLOB SOURCE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cc
+    ${CMAKE_CURRENT_SOURCE_DIR}/wfd5/*.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/nalu/*.cc
 )
 
@@ -26,6 +27,7 @@ target_link_libraries(data_products
 #These are the data products for which we make root dictionary
 set(DataProducts 
     ${PROJECT_SOURCE_DIR}/include/data_products/common/*.hh
+    ${PROJECT_SOURCE_DIR}/include/data_products/wfd5/*.hh
     ${PROJECT_SOURCE_DIR}/include/data_products/nalu/*.hh
 )
 

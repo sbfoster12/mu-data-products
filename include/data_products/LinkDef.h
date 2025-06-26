@@ -4,9 +4,30 @@
 #pragma link off all classes;
 #pragma link off all functions;
 
+// Common data products
 #pragma link C++ class dataProducts::DataProduct+;
 #pragma link C++ class std::vector<dataProducts::DataProduct>+;
 
+//WFD5 data products
+#pragma link C++ class dataProducts::WFD5FC7Header+;
+#pragma link C++ class std::vector<dataProducts::WFD5FC7Header>+;
+
+#pragma link C++ class dataProducts::WFD5WFD5Header+;
+#pragma link C++ class std::vector<dataProducts::WFD5WFD5Header>+;
+
+#pragma link C++ class dataProducts::WFD5ChannelHeader+;
+#pragma link C++ class std::vector<dataProducts::WFD5ChannelHeader>+;
+
+#pragma link C++ class dataProducts::WFD5WaveformHeader+;
+#pragma link C++ class std::vector<dataProducts::WFD5WaveformHeader>+;
+
+#pragma link C++ class dataProducts::WFD5Waveform+;
+#pragma link C++ class std::vector<dataProducts::WFD5Waveform>+;
+
+#pragma link C++ class dataProducts::WFD5ODB+;
+#pragma link C++ class std::vector<dataProducts::WFD5ODB>+;
+
+// NALU data products
 #pragma link C++ class dataProducts::NaluEventHeader+;
 #pragma link C++ class std::vector<dataProducts::NaluEventHeader>+;
 
