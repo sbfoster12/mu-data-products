@@ -7,19 +7,21 @@ A C++ library defining the persistent data products used when unpacking midas da
 - [CMake]
 - [ROOT]
 
+## Cloning the repository
+
+You can either clone this repository on its own via:
+
+```bash
+git clone https://github.com/sbfoster12/mu-data-products.git
+``` 
+
+or you can clone the app level repository. Follow the instructions here: https://github.com/sbfoster12/mu-app
+
 ## Build instructions
 
-```bash
-# Clone the repository
-git clone https://github.com/sbfoster12/mu-data-products.git
+If you are building this repository on its own, you should first source the `setenv.sh` script to set up the environment, and then you can build:
 
-# Build the respository
-cd mu-data-products
+```bash
+source ./scripts/setenv.sh
 ./scripts/build.sh
-```
-
-## Setup environment to use the data products in ROOT
-
-```bash
-source scripts/setenv.sh
 ```
