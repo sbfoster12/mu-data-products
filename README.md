@@ -23,7 +23,7 @@ If you are building this repository on its own, you should first source the `set
 
 ```bash
 source ./scripts/setenv.sh
-./scripts/build.sh
+./scripts/build.sh -o
 ```
 
 ## Running the application
