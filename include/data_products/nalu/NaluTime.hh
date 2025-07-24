@@ -3,7 +3,7 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
      * @class Time
@@ -11,19 +11,19 @@ namespace data_products::nalu {
      *
      * Inherits from DataProduct. 
      */
-    class Time : public data_products::common::DataProduct {
+    class NaluTime : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            Time();
+            NaluTime();
 
             /**
              * @brief Constructor with event_footer index.
              * @param event_footer 2 byte word in the footer
              */
-            Time(
+            NaluTime(
                  uint64_t collection_cycle_index
                 ,uint64_t collection_cycle_timestamp_ns
                 ,double udp_time
@@ -37,7 +37,7 @@ namespace data_products::nalu {
             /**
              * @brief Destructor.
              */
-            ~Time();
+            ~NaluTime();
 
             /**
              * @brief Collection cycle index
@@ -90,15 +90,15 @@ namespace data_products::nalu {
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(Time,1)
+            ClassDefOverride(NaluTime,1)
     };
 
     /**
      * @typedef TimeCollection
      * @brief A collection (vector) of Time objects.
      */
-    typedef std::vector<Time> TimeCollection;
+    typedef std::vector<NaluTime> NaluTimeCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_TIME_HH

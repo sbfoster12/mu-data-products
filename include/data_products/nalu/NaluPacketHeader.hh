@@ -3,27 +3,27 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
-     * @class PacketHeader
+     * @class NaluPacketHeader
      * @brief Represents the header information for a NALU packet.
      *
      * Inherits from DataProduct.
      */
-    class PacketHeader : public data_products::common::DataProduct {
+    class NaluPacketHeader : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            PacketHeader();
+            NaluPacketHeader();
 
             /**
              * @brief Constructor with event index.
              * @param packet_header
              */
-            PacketHeader(
+            NaluPacketHeader(
                  uint16_t packet_header
                 ,uint16_t packet_info
                 ,uint16_t channel
@@ -35,7 +35,7 @@ namespace data_products::nalu {
             /**
              * @brief Destructor.
              */
-            ~PacketHeader();
+            ~NaluPacketHeader();
 
             /**
              * @brief Packet header.
@@ -73,20 +73,20 @@ namespace data_products::nalu {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the PacketHeader.
+             * @brief Display the contents of the NaluPacketHeader.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(PacketHeader,1)
+            ClassDefOverride(NaluPacketHeader,1)
     };
 
     /**
-     * @typedef PacketHeaderCollection
-     * @brief A collection (vector) of PacketHeader objects.
+     * @typedef NaluPacketHeaderCollection
+     * @brief A collection (vector) of NaluPacketHeader objects.
      */
-    typedef std::vector<PacketHeader> PacketHeaderCollection;
+    typedef std::vector<NaluPacketHeader> NaluPacketHeaderCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_PACKETHEADER_HH

@@ -3,32 +3,32 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
-     * @class EventFooter
+     * @class NaluEventFooter
      * @brief Represents the footer information for a NALU event.
      *
      * Inherits from DataProduct. 
      */
-    class EventFooter : public data_products::common::DataProduct {
+    class NaluEventFooter : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            EventFooter();
+            NaluEventFooter();
 
             /**
              * @brief Constructor with event_footer index.
              * @param event_footer 2 byte word in the footer
              */
-            EventFooter(uint32_t event_footer);
+            NaluEventFooter(uint32_t event_footer);
 
             /**
              * @brief Destructor.
              */
-            ~EventFooter();
+            ~NaluEventFooter();
 
             /**
              * @brief Index of the event.
@@ -41,20 +41,20 @@ namespace data_products::nalu {
             std::string String() const;
 
             /**
-             * @brief Display the contents of the EventFooter.
+             * @brief Display the contents of the NaluEventFooter.
              */
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(EventFooter,1)
+            ClassDefOverride(NaluEventFooter,1)
     };
 
     /**
-     * @typedef EventFooterCollection
-     * @brief A collection (vector) of EventFooter objects.
+     * @typedef NaluEventFooterCollection
+     * @brief A collection (vector) of NaluEventFooter objects.
      */
-    typedef std::vector<EventFooter> EventFooterCollection;
+    typedef std::vector<NaluEventFooter> NaluEventFooterCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_EVENTFOOTER_HH

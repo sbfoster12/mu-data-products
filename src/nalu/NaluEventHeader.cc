@@ -1,8 +1,8 @@
-#include "data_products/nalu/EventHeader.hh"
+#include "data_products/nalu/NaluEventHeader.hh"
 
-using namespace data_products::nalu;
+using namespace dataProducts;
 
-EventHeader::EventHeader()
+NaluEventHeader::NaluEventHeader()
     : DataProduct()
     ,event_header(0)
     ,event_info(0)
@@ -14,7 +14,7 @@ EventHeader::EventHeader()
     ,num_packets(0)
 {}
 
-EventHeader::EventHeader(
+NaluEventHeader::NaluEventHeader(
      uint16_t event_header_arg
     ,uint16_t event_info_arg
     ,uint32_t event_index_arg
@@ -35,12 +35,12 @@ EventHeader::EventHeader(
     ,num_packets(num_packets_arg)
 {}
 
-EventHeader::~EventHeader() {};
+NaluEventHeader::~NaluEventHeader() {};
 
-std::string EventHeader::String() const {
+std::string NaluEventHeader::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "EventHeader: " << std::endl;
+    oss << "NaluEventHeader: " << std::endl;
     oss << "    event_header:          " << std::hex << std::setw(4) << std::setfill('0') << event_header << std::endl;
     oss << "    event_info:            " << std::dec << event_info << std::endl;
     oss << "    event_index:           " << std::dec << event_index << std::endl;
@@ -52,6 +52,6 @@ std::string EventHeader::String() const {
     return oss.str();
 }
 
-void EventHeader::Show() const { 
+void NaluEventHeader::Show() const { 
     std::cout << this->String();
 }

@@ -1,8 +1,8 @@
-#include "data_products/wfd5/ChannelHeader.hh"
+#include "data_products/wfd5/WFD5ChannelHeader.hh"
 
-using namespace data_products::wfd5;
+using namespace dataProducts;
 
-ChannelHeader::ChannelHeader()
+WFD5ChannelHeader::WFD5ChannelHeader()
     : DataProduct(),
     crateNum(0),
     amcNum(0),
@@ -18,7 +18,7 @@ ChannelHeader::ChannelHeader()
     eventLength(0)
 {};
 
-ChannelHeader::ChannelHeader(unsigned int crateNumArg
+WFD5ChannelHeader::WFD5ChannelHeader(unsigned int crateNumArg
     ,unsigned int amcNumArg
     ,unsigned int waveformCountArg
     ,unsigned int waveformGapArg
@@ -44,12 +44,12 @@ ChannelHeader::ChannelHeader(unsigned int crateNumArg
     ,eventLength(eventLengthArg)
 {}
 
-ChannelHeader::~ChannelHeader() {};
+WFD5ChannelHeader::~WFD5ChannelHeader() {};
 
-void ChannelHeader::Show() const {
+void WFD5ChannelHeader::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "ChannelHeader:" << std::endl;
+    oss << "WFD5ChannelHeader:" << std::endl;
     oss << "    crateNum: " << crateNum << std::endl;
     oss << "    amcNum: " << amcNum << std::endl;
     oss << "    waveformCount: " << waveformCount << std::endl;

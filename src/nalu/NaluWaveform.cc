@@ -1,31 +1,31 @@
-#include "data_products/nalu/Waveform.hh"
+#include "data_products/nalu/NaluWaveform.hh"
 #include <numeric>
 
-using namespace data_products::nalu;
+using namespace dataProducts;
 
-Waveform::Waveform()
+NaluWaveform::NaluWaveform()
     : DataProduct()
 {}
 
-Waveform::Waveform(PacketCollection packets
+NaluWaveform::NaluWaveform(NaluPacketCollection nalu_packets
     ) : DataProduct()
 {
 
-    if (packets.size() != 0) {
-        channel_num = packets.at(0).channel_num;
+    if (nalu_packets.size() != 0) {
+        channel_num = nalu_packets.at(0).channel_num;
     }
 
-    for (const auto& nalu_packet : packets) {
+    for (const auto& nalu_packet : nalu_packets) {
         trace.insert(trace.end(),nalu_packet.trace.begin(),nalu_packet.trace.end());
     }
 }
 
-Waveform::~Waveform() {}
+NaluWaveform::~NaluWaveform() {}
 
-std::string Waveform::String() const {
+std::string NaluWaveform::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "Waveform:" << std::endl;
+    oss << "NaluWaveform:" << std::endl;
     oss << "    channel_num: " << channel_num << std::endl;
     oss << "    trace: ";
     for (const auto & sample : trace) {
@@ -35,6 +35,6 @@ std::string Waveform::String() const {
     return oss.str();
 }
 
-void Waveform::Show() const { 
+void NaluWaveform::Show() const { 
     std::cout << this->String();
 }

@@ -1,8 +1,8 @@
-#include "data_products/wfd5/WaveformHeader.hh"
+#include "data_products/wfd5/WFD5WaveformHeader.hh"
 
-using namespace data_products::wfd5;
+using namespace dataProducts;
 
-WaveformHeader::WaveformHeader()
+WFD5WaveformHeader::WFD5WaveformHeader()
     : DataProduct(),
     crateNum(0),
     amcNum(0),
@@ -19,7 +19,7 @@ WaveformHeader::WaveformHeader()
     triggerWidth(0),
     timeStamp(0) {}
 
-WaveformHeader::WaveformHeader(unsigned int crateNumArg
+WFD5WaveformHeader::WFD5WaveformHeader(unsigned int crateNumArg
     ,unsigned int amcNumArg
     ,unsigned int waveformCountArg
     ,unsigned int waveformGapArg
@@ -50,12 +50,12 @@ WaveformHeader::WaveformHeader(unsigned int crateNumArg
 {}
 
             
-WaveformHeader::~WaveformHeader() {};
+WFD5WaveformHeader::~WFD5WaveformHeader() {};
 
-void WaveformHeader::Show() const {
+void WFD5WaveformHeader::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "WaveformHeader: " << std::endl;
+    oss << "WFD5WaveformHeader: " << std::endl;
     oss << "    crateNum: " << crateNum << std::endl;
     oss << "    amcNum: " << amcNum << std::endl;
     oss << "    waveformCount: " << waveformCount << std::endl;

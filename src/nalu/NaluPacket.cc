@@ -1,15 +1,15 @@
-#include "data_products/nalu/Packet.hh"
+#include "data_products/nalu/NaluPacket.hh"
 
-using namespace data_products::nalu;
+using namespace dataProducts;
 
-Packet::Packet()
+NaluPacket::NaluPacket()
     : DataProduct(),
     channel_num(-1),
     window_position(-1),
     trace({})
 {}
 
-Packet::Packet(
+NaluPacket::NaluPacket(
     uint64_t channel_num_arg,
     uint64_t window_position_arg,
     std::vector<short> trace_arg)
@@ -19,12 +19,12 @@ Packet::Packet(
     trace(trace_arg)
 {}
 
-Packet::~Packet() {};
+NaluPacket::~NaluPacket() {};
 
-void Packet::Show() const {
+void NaluPacket::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "Packet: " << std::endl;
+    oss << "NaluPacket: " << std::endl;
     oss << "    channel_num: " << channel_num << std::endl;
     oss << "    window_position: " << window_position << std::endl;
     oss << "    trace.size(): " << trace.size() << std::endl;

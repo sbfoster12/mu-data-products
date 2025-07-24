@@ -3,7 +3,7 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
      * @class Packet
@@ -11,19 +11,19 @@ namespace data_products::nalu {
      *
      * Inherits from DataProduct.
      */
-    class Packet : public data_products::common::DataProduct {
+    class NaluPacket : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            Packet();
+            NaluPacket();
 
             /**
              * @brief Constructor with event index.
              * @param event_index Index of the event.
              */
-            Packet(
+            NaluPacket(
                  uint64_t channel_num
                 ,uint64_t window_position
                 ,std::vector<short> trace
@@ -32,7 +32,7 @@ namespace data_products::nalu {
             /**
              * @brief Destructor.
              */
-            ~Packet();
+            ~NaluPacket();
 
             /**
              * @brief Channel of this packet.
@@ -55,15 +55,15 @@ namespace data_products::nalu {
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(Packet,1)
+            ClassDefOverride(NaluPacket,1)
     };
 
     /**
      * @typedef PacketCollection
      * @brief A collection (vector) of Packet objects.
      */
-    typedef std::vector<Packet> PacketCollection;
+    typedef std::vector<NaluPacket> NaluPacketCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_PACKET_HH

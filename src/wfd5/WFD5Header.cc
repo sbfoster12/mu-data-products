@@ -1,6 +1,6 @@
 #include "data_products/wfd5/WFD5Header.hh"
 
-using namespace data_products::wfd5;
+using namespace dataProducts;
 
 WFD5Header::WFD5Header()
     : DataProduct(),

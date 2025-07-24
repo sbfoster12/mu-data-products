@@ -3,7 +3,7 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
      * @class PacketFooter
@@ -11,25 +11,25 @@ namespace data_products::nalu {
      *
      * Inherits from DataProduct.
      */
-    class PacketFooter : public data_products::common::DataProduct {
+    class NaluPacketFooter : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            PacketFooter();
+            NaluPacketFooter();
 
             /**
              * @brief Constructor with event index.
              * @param parser_index Parser index
              * @param packet_footer Packet footer
              */
-            PacketFooter(uint32_t parser_index, uint32_t packet_footer);
+            NaluPacketFooter(uint32_t parser_index, uint32_t packet_footer);
 
             /**
              * @brief Destructor.
              */
-            ~PacketFooter();
+            ~NaluPacketFooter();
 
             /**
              * @brief Parser index.
@@ -52,15 +52,15 @@ namespace data_products::nalu {
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(PacketFooter,1)
+            ClassDefOverride(NaluPacketFooter,1)
     };
 
     /**
      * @typedef PacketFooterCollection
      * @brief A collection (vector) of PacketFooter objects.
      */
-    typedef std::vector<PacketFooter> PacketFooterCollection;
+    typedef std::vector<NaluPacketFooter> NaluPacketFooterCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_PACKETFOOTER_HH

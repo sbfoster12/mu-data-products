@@ -1,11 +1,11 @@
-#ifndef WFD5_WFD5HEADER_HH   
-#define WFD5_WFD5HEADER_HH
+#ifndef WFD5_HEADER_HH   
+#define WFD5_HEADER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::wfd5 {
+namespace dataProducts {
 
-    class WFD5Header : public data_products::common::DataProduct {
+    class WFD5Header : public DataProduct {
 
         public:
             WFD5Header();
@@ -67,6 +67,6 @@ namespace data_products::wfd5 {
     };
 
     typedef std::vector<WFD5Header> WFD5HeaderCollection;
-} // namespace data_products::wfd5
+} // namespace dataProducts
 
-#endif // WFD5_WFD5HEADER_HH
+#endif // WFD5_HEADER_HH

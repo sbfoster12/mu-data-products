@@ -3,14 +3,14 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::wfd5 {
+namespace dataProducts {
 
-    class ChannelHeader : public data_products::common::DataProduct {
+    class WFD5ChannelHeader : public DataProduct {
 
         public:
-            ChannelHeader();
+            WFD5ChannelHeader();
 
-            ChannelHeader(unsigned int crateNumArg
+            WFD5ChannelHeader(unsigned int crateNumArg
                 ,unsigned int amcNumArg
                 ,unsigned int waveformCountArg
                 ,unsigned int waveformGapArg
@@ -25,7 +25,7 @@ namespace data_products::wfd5 {
             );
 
             //Destructor
-            ~ChannelHeader();
+            ~WFD5ChannelHeader();
 
             //member variables
 
@@ -67,11 +67,11 @@ namespace data_products::wfd5 {
 
             void Show() const override;
 
-            ClassDefOverride(ChannelHeader,1)
+            ClassDefOverride(WFD5ChannelHeader,1)
     };
 
-    typedef std::vector<ChannelHeader> ChannelHeaderCollection;
+    typedef std::vector<WFD5ChannelHeader> ChannelHeaderCollection;
 
-} // namespace data_products::wfd5
+} // namespace dataProducts
 
 #endif // WFD5_CHANNELHEADER_HH

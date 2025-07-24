@@ -1,6 +1,6 @@
-#include "data_products/wfd5/FC7Header.hh"
+#include "data_products/fc7/FC7Header.hh"
 
-using namespace data_products::wfd5;
+using namespace dataProducts;
 
 FC7Header::FC7Header()
     : DataProduct(),

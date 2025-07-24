@@ -3,14 +3,14 @@
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::wfd5 {
+namespace dataProducts {
 
-    class Waveform : public data_products::common::DataProduct {
+    class WFD5Waveform : public DataProduct {
 
         public:
-            Waveform();
+            WFD5Waveform();
 
-            Waveform(int crateNum
+            WFD5Waveform(int crateNum
                 ,int amcNum
                 ,int channelTag
                 ,int eventNum
@@ -26,10 +26,10 @@ namespace data_products::wfd5 {
                 ,std::vector<short> trace
             );
 
-            Waveform(Waveform* w);
+            WFD5Waveform(WFD5Waveform* w);
 
             //Destructor
-            ~Waveform();
+            ~WFD5Waveform();
 
             // run/subrun number
             int runNum;
@@ -83,11 +83,11 @@ namespace data_products::wfd5 {
 
             TRef raw;
 
-            ClassDefOverride(Waveform,1)
+            ClassDefOverride(WFD5Waveform,1)
 
     };
 
-    typedef std::vector<Waveform> WaveformCollection;
-} // namespace data_products::wfd5
+    typedef std::vector<WFD5Waveform> WFD5WaveformCollection;
+} // namespace dataProducts
 
 #endif // WFD5_WAVEFORM_HH

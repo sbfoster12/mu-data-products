@@ -1,24 +1,24 @@
-#include "data_products/wfd5/ODB.hh"
+#include "data_products/wfd5/WFD5ODB.hh"
 #include <numeric>
 
-using namespace data_products::wfd5;
+using namespace dataProducts;
 
-ODB::ODB()
+WFD5ODB::WFD5ODB()
     : DataProduct()
     ,wfd5_odb_string("")
 {}
 
-ODB::ODB(std::string wfd5_odb_string_arg)
+WFD5ODB::WFD5ODB(std::string wfd5_odb_string_arg)
     : DataProduct()
     ,wfd5_odb_string(wfd5_odb_string_arg)
 {}
 
-ODB::~ODB() {}
+WFD5ODB::~WFD5ODB() {}
 
-void ODB::Show() const {
+void WFD5ODB::Show() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "ODB:" << std::endl;
+    oss << "WFD5ODB:" << std::endl;
     oss << wfd5_odb_string << std::endl;
     oss << std::endl;
     oss << std::endl;

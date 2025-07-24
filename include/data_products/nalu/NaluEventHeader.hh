@@ -1,9 +1,9 @@
-#ifndef EVENTHEADER_HH   
-#define EVENTHEADER_HH
+#ifndef NALU_EVENTHEADER_HH   
+#define NALU_EVENTHEADER_HH
 
 #include "data_products/common/DataProduct.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
      * @class EventHeader
@@ -11,19 +11,19 @@ namespace data_products::nalu {
      *
      * Inherits from DataProduct. Stores metadata such as the event index and number of packets.
      */
-    class EventHeader : public data_products::common::DataProduct {
+    class NaluEventHeader : public DataProduct {
 
         public:
             /**
              * @brief Default constructor.
              */
-            EventHeader();
+            NaluEventHeader();
 
             /**
              * @brief Constructor with event index.
              * @param ...
              */
-            EventHeader(
+            NaluEventHeader(
                  uint16_t event_header
                 ,uint16_t event_info
                 ,uint32_t event_index
@@ -36,7 +36,7 @@ namespace data_products::nalu {
             /**
              * @brief Destructor.
              */
-            ~EventHeader();
+            ~NaluEventHeader();
 
             /**
              * @brief Event header.
@@ -89,15 +89,15 @@ namespace data_products::nalu {
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(EventHeader,1)
+            ClassDefOverride(NaluEventHeader,1)
     };
 
     /**
-     * @typedef EventHeaderCollection
-     * @brief A collection (vector) of EventHeader objects.
+     * @typedef NaluEventHeaderCollection
+     * @brief A collection (vector) of NaluEventHeader objects.
      */
-    typedef std::vector<EventHeader> EventHeaderCollection;
+    typedef std::vector<NaluEventHeader> NaluEventHeaderCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
-#endif // EVENTHEADER_HH
+#endif // NALU_EVENTHEADER_HH

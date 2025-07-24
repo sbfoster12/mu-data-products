@@ -1,14 +1,14 @@
-#include "data_products/nalu/PacketFooter.hh"
+#include "data_products/nalu/NaluPacketFooter.hh"
 
-using namespace data_products::nalu;
+using namespace dataProducts;
 
-PacketFooter::PacketFooter()
+NaluPacketFooter::NaluPacketFooter()
     : DataProduct(),
     parser_index(0),
     packet_footer(0)
 {}
 
-PacketFooter::PacketFooter(
+NaluPacketFooter::NaluPacketFooter(
     uint32_t parser_index_arg,
     uint32_t packet_footer_arg
     )
@@ -17,17 +17,17 @@ PacketFooter::PacketFooter(
     packet_footer(packet_footer_arg)
 {}
 
-PacketFooter::~PacketFooter() {};
+NaluPacketFooter::~NaluPacketFooter() {};
 
-std::string PacketFooter::String() const {
+std::string NaluPacketFooter::String() const {
     std::ostringstream oss;
     oss << std::endl;
-    oss << "PacketFooter: " << std::endl;
+    oss << "NaluPacketFooter: " << std::endl;
     oss << "    parser_index: " << std::dec << parser_index << std::endl;
     oss << "    packet_footer: " << std::hex << "0x" << packet_footer << std::endl;
     return oss.str();
 }
 
-void PacketFooter::Show() const { 
+void NaluPacketFooter::Show() const { 
     std::cout << this->String();
 }

@@ -1,9 +1,9 @@
 #ifndef NALU_WAVEFORM_HH 
 #define NALU_WAVEFORM_HH
 
-#include "data_products/nalu/Packet.hh"
+#include "data_products/nalu/NaluPacket.hh"
 
-namespace data_products::nalu {
+namespace dataProducts {
 
     /**
      * @class Waveform
@@ -11,25 +11,25 @@ namespace data_products::nalu {
      *
      * Inherits from DataProduct. Stores the waveforms.
      */
-    class Waveform : public data_products::common::DataProduct {
+    class NaluWaveform : public DataProduct {
 
         public:
 
             /**
              * @brief Default constructor.
              */
-            Waveform();
+            NaluWaveform();
 
             /**
              * @brief Constructor with packet collection.
              * @param packets A collection of packets
              */
-            Waveform(PacketCollection packets);
+            NaluWaveform(NaluPacketCollection packets);
 
             /**
              * @brief Destructor.
              */
-            ~Waveform();
+            ~NaluWaveform();
 
             /**
              * @brief Index of the event.
@@ -52,7 +52,7 @@ namespace data_products::nalu {
             void Show() const override;
 
             /// ROOT class definition macro with versioning
-            ClassDefOverride(Waveform,1)
+            ClassDefOverride(NaluWaveform,1)
 
     };
 
@@ -60,8 +60,8 @@ namespace data_products::nalu {
      * @typedef WaveformCollection
      * @brief A collection (vector) of Waveform objects.
      */
-    typedef std::vector<Waveform> WaveformCollection;
+    typedef std::vector<NaluWaveform> NaluWaveformCollection;
 
-} // namespace data_products::nalu
+} // namespace dataProducts
 
 #endif // NALU_WAVEFORM_HH
