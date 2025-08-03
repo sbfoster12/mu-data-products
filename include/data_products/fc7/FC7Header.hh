@@ -64,6 +64,9 @@ namespace dataProducts {
             unsigned int minorRevision;
             unsigned int patchRevision;
 
+            // Member variable pointer for defining iterations (none for fc7 header)
+            static constexpr int FC7Header::* iterMemb = nullptr;
+
             void Show() const override;
 
             ClassDefOverride(FC7Header,1)

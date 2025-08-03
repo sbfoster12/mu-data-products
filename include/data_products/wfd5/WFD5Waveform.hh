@@ -83,6 +83,9 @@ namespace dataProducts {
 
             TRef raw;
 
+            // Member variable pointer for defining iterations
+            static constexpr auto iterMemb = &WFD5Waveform::waveformIndex;
+
             ClassDefOverride(WFD5Waveform,1)
 
     };

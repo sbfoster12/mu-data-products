@@ -65,12 +65,15 @@ namespace dataProducts {
             // 23 bit event length (async mode)
             unsigned int eventLength;
 
+            // Member variable pointer for defining iterations (none for channel header)
+            static constexpr int WFD5ChannelHeader::* iterMemb = nullptr;
+
             void Show() const override;
 
             ClassDefOverride(WFD5ChannelHeader,1)
     };
 
-    typedef std::vector<WFD5ChannelHeader> ChannelHeaderCollection;
+    typedef std::vector<WFD5ChannelHeader> WFD5ChannelHeaderCollection;
 
 } // namespace dataProducts
 

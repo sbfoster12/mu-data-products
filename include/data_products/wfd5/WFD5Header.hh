@@ -60,6 +60,9 @@ namespace dataProducts {
             unsigned int minorRevision;
             unsigned int patchRevision;
 
+            // Member variable pointer for defining iterations (none for wfd5 header)
+            static constexpr int WFD5Header::* iterMemb = nullptr;
+
             void Show() const override;
 
             ClassDefOverride(WFD5Header,1)

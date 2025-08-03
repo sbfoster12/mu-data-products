@@ -73,6 +73,9 @@ namespace dataProducts {
 
             void Show() const override;
 
+            // Member variable pointer for defining iterations
+            static constexpr auto iterMemb = &WFD5WaveformHeader::waveformIndex;
+
             ClassDefOverride(WFD5WaveformHeader,1)
 
     };
