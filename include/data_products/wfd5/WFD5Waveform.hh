@@ -74,12 +74,19 @@ namespace dataProducts {
             // ADC count of each sample
             std::vector<short> trace;
 
-            //detector type and number
-            std::string detectorType;
-            int detectorNum;
+            //detector system and subdetector
+            std::string detectorSystem;
+            std::string subdetector;
             
             // visualization utilities
             void Show() const override;
+
+            void SetDetectorSystem(const std::string& system) {
+                detectorSystem = system;
+            }
+            void SetSubdetector(const std::string& subdet) {
+                subdetector = subdet;
+            }
 
             TRef raw;
 

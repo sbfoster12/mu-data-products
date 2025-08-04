@@ -18,8 +18,8 @@ WFD5Waveform::WFD5Waveform()
     digitizationShift(0),
     preTriggerLength(0),
     trace({}),
-    detectorType(""),
-    detectorNum(0)
+    detectorSystem(""),
+    subdetector("")
 {}
 
 WFD5Waveform::WFD5Waveform(int crateNumArg
@@ -55,8 +55,8 @@ WFD5Waveform::WFD5Waveform(int crateNumArg
     ,y(0.0)
     ,is_clipping(false)
     ,trace(traceArg)
-    ,detectorType("")
-    ,detectorNum(0)
+    ,detectorSystem("")
+    ,subdetector("")
     ,digitizationFrequency(1.0)
 {}
 
@@ -80,8 +80,8 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
     ,x(w->x)
     ,y(w->y)
     ,is_clipping(w->is_clipping)
-    ,detectorType(w->detectorType)
-    ,detectorNum(w->detectorNum)
+    ,detectorSystem(w->detectorSystem)
+    ,subdetector(w->subdetector)
     ,digitizationFrequency(w->digitizationFrequency)
 {
 }
@@ -97,8 +97,8 @@ void WFD5Waveform::Show() const {
     oss << "    crateNum: " << crateNum << std::endl;
     oss << "    amcSlot: " << amcNum << std::endl;
     oss << "    channelTag: " << channelTag << std::endl;
-    oss << "    detectorType: " << detectorType << std::endl;
-    oss << "    detectorNum: " << detectorNum << std::endl;
+    oss << "    detectorSystem: " << detectorSystem << std::endl;
+    oss << "    subdetector: " << subdetector << std::endl;
     oss << "    eventNum: " << eventNum << std::endl;
     oss << "    waveformIndex: " << waveformIndex << std::endl;
     oss << "    pedestalLevel: " << pedestalLevel << std::endl;
