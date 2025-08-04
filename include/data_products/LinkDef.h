@@ -27,6 +27,9 @@
 #pragma link C++ class dataProducts::WFD5ODB+;
 #pragma link C++ class std::vector<dataProducts::WFD5ODB>+;
 
+#pragma link C++ class dataProducts::RecoConfig+;
+#pragma link C++ class std::vector<dataProducts::RecoConfig>+;
+
 // NALU data products
 #pragma link C++ class dataProducts::NaluEventHeader+;
 #pragma link C++ class std::vector<dataProducts::NaluEventHeader>+;
