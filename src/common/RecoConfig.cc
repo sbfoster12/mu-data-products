@@ -7,8 +7,10 @@ RecoConfig::RecoConfig()
     jsonString("")
 {}
 
-RecoConfig::RecoConfig(const std::string& jsonStringArg) : DataProduct(),
-    jsonString(jsonStringArg)
+RecoConfig::RecoConfig(const std::string& jsonStringArg, int runArg, int subrunArg) : DataProduct(),
+    jsonString(jsonStringArg),
+    run(runArg),
+    subrun(subrunArg)
 {}
 
 RecoConfig::~RecoConfig() {};
@@ -18,5 +20,7 @@ void RecoConfig::Show() const {
     oss << std::endl;
     oss << "RecoConfig: " << std::endl;
     oss << "    jsonString: " << jsonString << std::endl;
+    oss << "    run: " << run << std::endl;
+    oss << "    subrun: " << subrun << std::endl;
     std::cout << oss.str();
 }

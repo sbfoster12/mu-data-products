@@ -10,7 +10,7 @@ namespace dataProducts {
         public:
             RecoConfig();
 
-            RecoConfig(const std::string& jsonStringArg);
+            RecoConfig(const std::string& jsonStringArg, int runArg, int subrunArg);
 
             //Destructor
             ~RecoConfig();
@@ -19,6 +19,12 @@ namespace dataProducts {
 
             // json string
             std::string jsonString;
+
+            // run number
+            int run;
+
+            // subrun number
+            int subrun;
 
             // Member variable pointer for defining iterations (none for reco config)
             static constexpr int RecoConfig::* iterMemb = nullptr;
