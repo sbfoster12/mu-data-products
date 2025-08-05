@@ -22,6 +22,13 @@ endif()
 # Set the path for where to look for the libraries of the installed target
 set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
 
+# See if we should build the NALU data products
+option(BUILD_NALU "Build the NALU data products" OFF)
+
+if(BUILD_NALU)
+    add_compile_definitions(BUILD_NALU)
+endif()
+
 # Add all the subdirectories
 add_subdirectory(src)
 

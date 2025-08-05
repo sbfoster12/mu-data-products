@@ -31,6 +31,7 @@
 #pragma link C++ class std::vector<dataProducts::RecoConfig>+;
 
 // NALU data products
+#ifdef BUILD_NALU
 #pragma link C++ class dataProducts::NaluEventHeader+;
 #pragma link C++ class std::vector<dataProducts::NaluEventHeader>+;
 
@@ -54,5 +55,6 @@
 
 #pragma link C++ class dataProducts::NaluODB+;
 #pragma link C++ class std::vector<dataProducts::NaluODB>+;
+#endif
 
 #endif

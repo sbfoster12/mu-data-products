@@ -3,8 +3,13 @@ file(GLOB SOURCE_FILES
     ${CMAKE_CURRENT_SOURCE_DIR}/common/*.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/wfd5/*.cc
     ${CMAKE_CURRENT_SOURCE_DIR}/fc7/*.cc
-    ${CMAKE_CURRENT_SOURCE_DIR}/nalu/*.cc
 )
+
+# Conditionally add Nalu
+if(BUILD_NALU)
+    file(GLOB NALU_SOURCES ${CMAKE_CURRENT_SOURCE_DIR}/nalu/*.cc)
+    list(APPEND SOURCE_FILES ${NALU_SOURCES})
+endif()
 
 # Make an object file
 add_library(data_products SHARED ${SOURCE_FILES})
@@ -30,8 +35,14 @@ set(DataProducts
     ${PROJECT_SOURCE_DIR}/include/data_products/common/*.hh
     ${PROJECT_SOURCE_DIR}/include/data_products/wfd5/*.hh
     ${PROJECT_SOURCE_DIR}/include/data_products/fc7/*.hh
-    ${PROJECT_SOURCE_DIR}/include/data_products/nalu/*.hh
 )
+
+# Conditionally add nalu
+if(BUILD_NALU)
+    list(APPEND DataProducts
+        ${PROJECT_SOURCE_DIR}/include/data_products/nalu/*.hh
+    )
+endif()
 
 # Make the ROOT dictionary
 root_generate_dictionary(DataProductDictionary
