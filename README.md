@@ -12,10 +12,10 @@ A C++ library defining the persistent data products used when unpacking midas da
 You can either clone this repository on its own via:
 
 ```bash
-git clone https://github.com/sbfoster12/mu-data-products.git
+git clone https://github.com/PIONEER-Experiment/mu-data-products.git
 ``` 
 
-or you can clone the app level repository. Follow the instructions here: https://github.com/sbfoster12/mu-app
+or you can clone the app level repository. Follow the instructions here: https://github.com/PIONEER-Experiment/mu-app
 
 ## Build instructions
 
