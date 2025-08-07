@@ -40,7 +40,7 @@ WaveformFit::WaveformFit()
 {
 }
 
-WaveformFit::WaveformFit(const WFD5Waveform* wf) : DataProduct()
+WaveformFit::WaveformFit(WFD5Waveform* wf) : DataProduct()
     ,runNum(wf->runNum)
     ,subRunNum(wf->subRunNum)
     ,crateNum(wf->crateNum)
@@ -69,9 +69,9 @@ WaveformFit::WaveformFit(const WFD5Waveform* wf) : DataProduct()
     ,fillTypes({-1})
     ,pulse_time_ordering_({})
 {
-    // waveforms.push_back(TRef(const_cast(wf)));
-    // std::cout << "Created empty waveform fit result" << std::endl;
-    // Show();
+    // the only thing we do here is add a TRef, which technically does edit the object... But it should be ok?
+    // WFD5Waveform* wf_mut = const_cast<WFD5Waveform*>(wf); 
+    waveforms.push_back(TRef(wf));
 }
 
 WaveformFit::WaveformFit(WaveformFit* prev_fit) : DataProduct()

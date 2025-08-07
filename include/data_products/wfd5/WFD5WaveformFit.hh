@@ -143,7 +143,7 @@ namespace dataProducts {
         public:
             WaveformFit();
 
-            WaveformFit(const WFD5Waveform* waveform);
+            WaveformFit(WFD5Waveform* waveform);
             WaveformFit(WaveformFit* prev_fit);
 
             //Destructor
