@@ -101,7 +101,7 @@ namespace dataProducts {
                 this_file->Close();
             }
 
-            std::vector<dataProducts::ChannelID> GetIDs()
+            std::vector<dataProducts::ChannelID> GetIDs() const
             {
                 std::vector<dataProducts::ChannelID> ding = {};
                 for (auto &dong:laser_1_splines)
@@ -109,6 +109,11 @@ namespace dataProducts {
                     ding.push_back(dong.first);
                 }
                 return ding;
+            }
+
+            bool SplinePresent(dataProducts::ChannelID id) const
+            {
+                return laser_1_splines.count(id);
             }
 
             fitter::CubicSpline* buildCubicSpline(const TSpline3* tSpline, fitter::CubicSpline::BoundaryType cond  = fitter::CubicSpline::BoundaryType::first) 
@@ -124,7 +129,7 @@ namespace dataProducts {
                 return new fitter::CubicSpline(knots, cond);
             }
 
-        ClassDefOverride(SplineHolder,3)
+        ClassDefOverride(SplineHolder,1)
         
 
         private:

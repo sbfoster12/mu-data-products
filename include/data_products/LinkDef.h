@@ -28,7 +28,7 @@
 #pragma link C++ class std::vector<dataProducts::WaveformFit>+;
 
 #pragma link C++ class dataProducts::SplineHolder+;
-#pragma link C++ class std::vector<dataProducts::WaveformFitSplineHolder+;
+#pragma link C++ class std::vector<dataProducts::SplineHolder>+;
 
 #pragma link C++ class dataProducts::WFD5ODB+;
 #pragma link C++ class std::vector<dataProducts::WFD5ODB>+;

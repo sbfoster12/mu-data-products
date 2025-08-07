@@ -69,7 +69,7 @@ WaveformFit::WaveformFit(const WFD5Waveform* wf) : DataProduct()
     ,fillTypes({-1})
     ,pulse_time_ordering_({})
 {
-    waveforms.push_back(TRef(const_cast(wf)));
+    // waveforms.push_back(TRef(const_cast(wf)));
     // std::cout << "Created empty waveform fit result" << std::endl;
     // Show();
 }
