@@ -116,3 +116,18 @@ void WFD5Waveform::Show() const {
     oss << std::endl;
     std::cout << oss.str();
 }
+
+void WFD5Waveform::JitterCorrect(int evenOddDiff)
+{
+    // copied from g-2 code
+    
+    unsigned int startOffset = firstSampleNum % 2;
+    // // we want to correct odd samples if diff > 0, even otherwise
+    startOffset = (startOffset + (evenOddDiff > 0)) % 2;
+    short absDiff = std::abs(evenOddDiff);
+    for (unsigned int i = startOffset; i < trace.size(); i+=2){
+        if(std::abs(trace[i]) < 2045){// don't correct saturated samples
+        trace[i] += absDiff;    
+        }
+    }
+}

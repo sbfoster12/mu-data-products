@@ -22,22 +22,6 @@ namespace dataProducts {
     template <typename T> ChannelID GetID(T *x){
         return std::make_tuple(x->crateNum, x->amcNum, x->channelTag);
     };
-
-    class DataProduct : public TObject {
-
-        public:
-            DataProduct();
-
-            //Destructor
-            virtual ~DataProduct();
-
-            virtual void Show() const;
-
-            ClassDef(DataProduct,1)
-    };
-
-    typedef std::vector<DataProduct> DataProductCollection;
-    typedef std::vector<std::shared_ptr<DataProduct>> DataProductPtrCollection;
 } // namespace dataProducts
 
 #endif // DATAPRODUCT_HH

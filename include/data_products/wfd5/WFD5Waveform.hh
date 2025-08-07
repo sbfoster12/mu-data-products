@@ -88,12 +88,16 @@ namespace dataProducts {
                 subdetector = subdet;
             }
 
+            void JitterCorrect(int evenOddDiff);
+
+            dataProducts::ChannelID GetID() const { return {crateNum, amcNum, channelTag}; }
+
             TRef raw;
 
             // Member variable pointer for defining iterations
             static constexpr auto iterMemb = &WFD5Waveform::waveformIndex;
 
-            ClassDefOverride(WFD5Waveform,1)
+            ClassDefOverride(WFD5Waveform,3)
 
     };
 
