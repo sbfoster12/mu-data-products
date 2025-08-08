@@ -28,6 +28,8 @@ namespace dataProducts {
 
             WFD5Waveform(WFD5Waveform* w);
 
+            WFD5Waveform(const WFD5Waveform& w);
+
             //Destructor
             ~WFD5Waveform();
 

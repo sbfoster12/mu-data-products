@@ -86,6 +86,32 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
 {
 }
 
+WFD5Waveform::WFD5Waveform(const WFD5Waveform& w) : DataProduct()
+    ,runNum(w.runNum)
+    ,subRunNum(w.subRunNum)
+    ,crateNum(w.crateNum)
+    ,amcNum(w.amcNum)
+    ,channelTag(w.channelTag)
+    ,eventNum(w.eventNum)
+    ,waveformIndex(w.waveformIndex)
+    ,length(w.length)
+    ,pedestalLevel(w.pedestalLevel)
+    ,pedestalStdev(w.pedestalStdev)
+    ,firstSampleNum(w.firstSampleNum)
+    ,clockCounter(w.clockCounter)
+    ,preTriggerLength(w.preTriggerLength)
+    ,digitizationShift(w.digitizationShift)
+    ,trace(w.trace)
+    ,raw(const_cast<WFD5Waveform*>(&w))
+    ,x(w.x)
+    ,y(w.y)
+    ,is_clipping(w.is_clipping)
+    ,detectorSystem(w.detectorSystem)
+    ,subdetector(w.subdetector)
+    ,digitizationFrequency(w.digitizationFrequency)
+{
+}
+
 WFD5Waveform::~WFD5Waveform() {}
 
 void WFD5Waveform::Show() const {
