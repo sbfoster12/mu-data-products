@@ -13,6 +13,8 @@ WFD5Waveform::WFD5Waveform()
     length(0),
     pedestalLevel(0),
     pedestalStdev(0),
+    pedestalSamples({}),
+    pedestalStartSample(0),
     firstSampleNum(0),
     clockCounter(0),
     digitizationShift(0),
@@ -45,6 +47,8 @@ WFD5Waveform::WFD5Waveform(int crateNumArg
     ,length(lengthArg)
     ,pedestalLevel(pedestalLevelArg)
     ,pedestalStdev(pedestalStdevArg)
+    ,pedestalSamples({})
+    ,pedestalStartSample(0)
     ,firstSampleNum(firstSampleNumArg)
     ,clockCounter(clockCounterArg)
     ,preTriggerLength(preTriggerLengthArg)
@@ -71,6 +75,8 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
     ,length(w->length)
     ,pedestalLevel(w->pedestalLevel)
     ,pedestalStdev(w->pedestalStdev)
+    ,pedestalSamples(w->pedestalSamples)
+    ,pedestalStartSample(w->pedestalStartSample)
     ,firstSampleNum(w->firstSampleNum)
     ,clockCounter(w->clockCounter)
     ,preTriggerLength(w->preTriggerLength)
@@ -104,6 +110,8 @@ void WFD5Waveform::Show() const {
     oss << "    waveformIndex: " << waveformIndex << std::endl;
     oss << "    pedestalLevel: " << pedestalLevel << std::endl;
     oss << "    pedestalStdev: " << pedestalStdev << std::endl;
+    oss << "    pedestalSamples.size: " << pedestalSamples.size() << std::endl;
+    oss << "    pedestalStartSample: " << pedestalStartSample << std::endl;
     oss << "    first sample number: " << firstSampleNum << std::endl;
     oss << "    clock counter: " << clockCounter << std::endl;
     oss << "    preTriggerLength: " << preTriggerLength << std::endl;
