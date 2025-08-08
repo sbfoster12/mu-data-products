@@ -56,6 +56,8 @@ namespace dataProducts {
             // ADC count of pedestal level
             double pedestalLevel;
             double pedestalStdev;
+            std::vector<short> pedestalSamples;
+            int pedestalStartSample;
 
             double x,y;
             bool is_clipping;
