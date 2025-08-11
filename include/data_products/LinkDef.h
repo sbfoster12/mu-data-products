@@ -27,6 +27,12 @@
 #pragma link C++ class dataProducts::WaveformFit+;
 #pragma link C++ class std::vector<dataProducts::WaveformFit>+;
 
+#pragma link C++ class dataProducts::WaveformIntegral+;
+#pragma link C++ class std::vector<dataProducts::WaveformIntegral>+;
+
+#pragma link C++ class dataProducts::ClusteredHits+;
+#pragma link C++ class std::vector<dataProducts::ClusteredHits>+;
+
 #pragma link C++ class dataProducts::RFWaveformFit+;
 #pragma link C++ class std::vector<dataProducts::RFWaveformFit>+;
 
