@@ -201,6 +201,8 @@ namespace dataProducts {
             bool is_time_calibrated;
             bool is_normalized;
 
+            bool is_energy_calibrated;
+
             float time_shift;
             float time_scale;
             std::vector<float> norm_scale;
@@ -222,6 +224,9 @@ namespace dataProducts {
             int GetClosestPulseIndex(double time = 0);
             double GetClosestPulseTime(double time = 0);
             double GetClosestPulseAmplitude(double time = 0);
+
+            void CalibrateEnergies(double scale = 1.0);
+            double calibration_factor;
 
             ClassDefOverride(WaveformFit,15)
 

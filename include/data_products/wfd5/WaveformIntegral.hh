@@ -19,6 +19,7 @@ namespace dataProducts {
             WaveformIntegral();
 
             WaveformIntegral(WFD5Waveform* waveform, double nsigma=10.0, int search_method=0, std::tuple<int,int> presample_config={10,250}, int seed_index=-1, int seeded_search_window=-1);
+            WaveformIntegral(WaveformIntegral* uncalibrated);
 
             //Destructor
             ~WaveformIntegral();
@@ -70,6 +71,7 @@ namespace dataProducts {
             bool clipped_integration_window;
 
             TRef raw;
+            TRef parent;
 
             //detector type and number
             std::string detectorSystem;
@@ -89,7 +91,11 @@ namespace dataProducts {
             int time_scale;
             void CorrectTimes();
 
-            ClassDefOverride(WaveformIntegral,1)
+            bool is_energy_calibrated;
+            double calibration_factor;
+            void CalibrateEnergies(double scale);
+            
+            ClassDefOverride(WaveformIntegral,2)
 
     };
 
