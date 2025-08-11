@@ -92,6 +92,11 @@ namespace dataProducts {
 
             void JitterCorrect(int evenOddDiff);
 
+            double PeakToPeak();
+            int GetPeakIndex();
+            void InvertPulse();
+            void SetRunSubrun(int run, int subrun) {runNum=run; subRunNum=subrun;};
+
             dataProducts::ChannelID GetID() const { return {crateNum, amcNum, channelTag}; }
 
             TRef raw;
@@ -99,7 +104,7 @@ namespace dataProducts {
             // Member variable pointer for defining iterations
             static constexpr auto iterMemb = &WFD5Waveform::waveformIndex;
 
-            ClassDefOverride(WFD5Waveform,3)
+            ClassDefOverride(WFD5Waveform,4)
 
     };
 

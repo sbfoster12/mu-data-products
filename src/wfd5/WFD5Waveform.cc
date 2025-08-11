@@ -140,3 +140,29 @@ void WFD5Waveform::JitterCorrect(int evenOddDiff)
         }
     }
 }
+
+double WFD5Waveform::PeakToPeak()
+{
+    // return the peak to peak difference between the min/max amplitude sample
+    short mini = *std::min_element(trace.begin(), trace.end());
+    short maxi = *std::max_element(trace.begin(), trace.end());
+    // short diff = maxi - mini;
+    // std::cout << "   calculating peak to peak: " << mini << " / " << maxi << " -> " << diff << std::endl;
+    // return std::static_cast<double>(diff);
+    return maxi - mini;
+}
+
+int WFD5Waveform::GetPeakIndex()
+{
+    auto maxIt = std::max_element(trace.begin(), trace.end());
+    return std::distance(trace.begin(), maxIt);
+}
+
+void WFD5Waveform::InvertPulse()
+{
+    // inverts the pulse shape by a simple *-1
+    for (int i = 0; i < trace.size(); i++)
+    {
+        trace.at(i) = trace.at(i) * -1.0;
+    }
+}
