@@ -191,6 +191,9 @@ namespace dataProducts {
             TRef uncalibrated_fit;
             TRef norm_fit;
 
+            bool is_seeded;
+            TRef seed;
+
 
             //detector type and number
             std::string detectorSystem;

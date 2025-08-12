@@ -33,6 +33,9 @@
 #pragma link C++ class dataProducts::ClusteredHits+;
 #pragma link C++ class std::vector<dataProducts::ClusteredHits>+;
 
+#pragma link C++ class dataProducts::TimeSeed+;
+#pragma link C++ class std::vector<dataProducts::TimeSeed>+;
+
 #pragma link C++ class dataProducts::RFWaveformFit+;
 #pragma link C++ class std::vector<dataProducts::RFWaveformFit>+;
 
