@@ -63,6 +63,37 @@ WaveformIntegral::WaveformIntegral(WFD5Waveform* waveform, double nsigma, int se
     // DoIntegration(presample_config, seed_index, seeded_search_window);
 }
 
+WaveformIntegral::WaveformIntegral(WaveformIntegral* uncalibrated) : DataProduct()
+    ,runNum(uncalibrated->runNum)
+    ,subRunNum(uncalibrated->subRunNum)
+    ,crateNum(uncalibrated->crateNum)
+    ,amcNum(uncalibrated->amcNum)
+    ,channelTag(uncalibrated->channelTag)
+    ,eventNum(uncalibrated->eventNum)
+    ,waveformIndex(uncalibrated->waveformIndex)
+    ,length(uncalibrated->length)
+    ,pedestalLevel(uncalibrated->pedestalLevel)
+    ,pedestalStdev(uncalibrated->pedestalStdev)
+    ,peak_time(uncalibrated->peak_time)
+    ,fullintegral(uncalibrated->fullintegral)
+    ,integral(uncalibrated->integral)
+    ,nsigma(uncalibrated->nsigma)
+    ,search_method(uncalibrated->search_method)
+    ,raw(uncalibrated->raw)
+    ,parent(uncalibrated)
+    ,x(uncalibrated->x)
+    ,y(uncalibrated->y)
+    ,is_clipping(uncalibrated->is_clipping)
+    ,clipped_integration_window(uncalibrated->clipped_integration_window)
+    ,detectorSystem(uncalibrated->detectorSystem)
+    ,subdetector(uncalibrated->subdetector)
+    ,is_time_corrected(uncalibrated->is_time_corrected)
+    ,time_shift(uncalibrated->time_shift)
+    ,time_scale(uncalibrated->time_scale)
+{
+    // DoIntegration(presample_config, seed_index, seeded_search_window);
+}
+
 float WaveformIntegral::IntegralAroundPeak(int nPresamples, int nPostsamples, bool subtract_pedestal)
 {
     WFD5Waveform *waveform = (WFD5Waveform*)raw.GetObject();
@@ -211,6 +242,15 @@ ChannelID WaveformIntegral::GetID() const
     return std::make_tuple(crateNum, amcNum, channelTag);
 }
 
+void WaveformIntegral::CalibrateEnergies(double scale)
+{
+    integral *= scale;
+    fullintegral *= scale;
+    calibration_factor = scale;
+
+    is_energy_calibrated = true;
+};
+
 WaveformIntegral::~WaveformIntegral() {}
 
 void WaveformIntegral::Show() const {
@@ -229,6 +269,7 @@ void WaveformIntegral::Show() const {
     oss << "    (restricted window) integral: " << integral << std::endl;
     oss << "    (full) integral: " << fullintegral << std::endl;
     oss << "    t0 time corrected: " << is_time_corrected << std::endl;
+    oss << "    energy calibrated: " << is_energy_calibrated << std::endl;
     oss << "    time offset (shift): " << time_shift << std::endl;
     oss << "    time offset (scale factor): " << time_scale << std::endl;
     oss << "        trace: ";

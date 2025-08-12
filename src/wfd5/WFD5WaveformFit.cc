@@ -30,6 +30,7 @@ WaveformFit::WaveformFit()
     ,detectorNum(0)
     ,is_time_calibrated(false)
     ,is_normalized(false)
+    ,is_energy_calibrated(false)
     ,time_shift(-1e10)
     ,time_scale(-1e10)
     ,norm_scale({})
@@ -62,6 +63,7 @@ WaveformFit::WaveformFit(WFD5Waveform* wf) : DataProduct()
     ,subdetector(wf->subdetector)
     ,is_time_calibrated(false)
     ,is_normalized(false)
+    ,is_energy_calibrated(false)
     ,time_shift(-1e10)
     ,time_scale(-1e10)
     ,norm_scale({})
@@ -98,9 +100,11 @@ WaveformFit::WaveformFit(WaveformFit* prev_fit) : DataProduct()
     // ,uncalibrated_fit(prev_fit)
     ,is_time_calibrated(false)
     ,is_normalized(false)
+    ,is_energy_calibrated(false)
     ,time_shift(-1e10)
     ,time_scale(-1e10)
     ,norm_scale({})
+    ,splines(prev_fit->splines)
     // ,triggerDoubleIndex(prev_fit->triggerDoubleIndex)
     ,clockCounters(prev_fit->clockCounters)
     ,fillTypes(prev_fit->fillTypes)
@@ -258,6 +262,16 @@ double WaveformFit::GetClosestPulseAmplitude(double time)
 {
     return amplitudes[GetClosestPulseIndex(time)];
 }
+
+void WaveformFit::CalibrateEnergies(double scale)
+{
+    for (int i = 0; i < amplitudes.size(); i++)
+    {
+        amplitudes[i] *= scale;
+    }
+    calibration_factor = scale;
+    is_energy_calibrated = true;
+};
 
 
 ChannelID WaveformFit::GetID() const {
