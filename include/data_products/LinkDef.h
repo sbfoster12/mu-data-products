@@ -21,6 +21,7 @@
 #pragma link C++ class dataProducts::WFD5WaveformHeader+;
 #pragma link C++ class std::vector<dataProducts::WFD5WaveformHeader>+;
 
+#pragma link C++ class dataProducts::WaveformPeaks+;
 #pragma link C++ class dataProducts::WFD5Waveform+;
 #pragma link C++ class std::vector<dataProducts::WFD5Waveform>+;
 
@@ -32,6 +33,9 @@
 
 #pragma link C++ class dataProducts::ClusteredHits+;
 #pragma link C++ class std::vector<dataProducts::ClusteredHits>+;
+
+#pragma link C++ class dataProducts::TimeSeed+;
+#pragma link C++ class std::vector<dataProducts::TimeSeed>+;
 
 #pragma link C++ class dataProducts::RFWaveformFit+;
 #pragma link C++ class std::vector<dataProducts::RFWaveformFit>+;
