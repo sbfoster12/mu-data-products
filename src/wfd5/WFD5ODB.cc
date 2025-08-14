@@ -26,7 +26,7 @@ WFD5ODB::WFD5ODB(std::string wfd5_odb_string_arg)
 }
 
 void WFD5ODB::ParseXML() {
-    std::cout << "-> reco::WFD5ODB: Parsing XML odd." << std::endl;
+    std::cout << "-> reco::WFD5ODB: Parsing XML odb." << std::endl;
 
     // Parse each line of the odb string for the digitization frequencies
     int riderNum = -1;
