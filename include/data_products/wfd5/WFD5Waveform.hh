@@ -96,6 +96,7 @@ namespace dataProducts {
             int GetPeakIndex();
             void InvertPulse();
             void SetRunSubrun(int run, int subrun) {runNum=run; subRunNum=subrun;};
+            void SetDigitizationFrequency(double freq) { digitizationFrequency = freq; };
 
             dataProducts::ChannelID GetID() const { return {crateNum, amcNum, channelTag}; }
 
