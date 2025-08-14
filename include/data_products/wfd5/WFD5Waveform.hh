@@ -72,6 +72,12 @@ namespace dataProducts {
             int preTriggerLength;
             double digitizationFrequency;
             int digitizationShift; //number of 40 MHz clock cycles to shift this by, relative to the T0 trigger
+            double customOffsetClockTicks; // set shift relative to t0 in terms of a number of 1.25 ns (800 MS/s) clock ticks
+            double GetTime(double time, bool ct_to_ns = false);
+            double GetFirstSampleTime(bool ct_to_ns = false) { return GetTime(0.0, ct_to_ns); };
+            std::vector<double> GetTimes(bool ct_to_ns = false);
+            void SetTimeOffset(double offset) {customOffsetClockTicks = -1.0*offset;};
+            void SetTimeOffset(WFD5Waveform* wf, double offset=0.0) {SetTimeOffset(wf->GetTime(offset));};
 
             // ADC count of each sample
             std::vector<short> trace;
@@ -93,7 +99,10 @@ namespace dataProducts {
             void JitterCorrect(int evenOddDiff);
 
             double PeakToPeak();
+            double PeakToPeak(int b1, int b2);
             int GetPeakIndex();
+            int GetPeakIndexInBounds(int b1, int b2);
+
             void InvertPulse();
             void SetRunSubrun(int run, int subrun) {runNum=run; subRunNum=subrun;};
 

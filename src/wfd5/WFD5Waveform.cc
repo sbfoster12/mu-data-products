@@ -53,6 +53,7 @@ WFD5Waveform::WFD5Waveform(int crateNumArg
     ,clockCounter(clockCounterArg)
     ,preTriggerLength(preTriggerLengthArg)
     ,digitizationShift(0)
+    ,customOffsetClockTicks(0.0)
     ,runNum(runNumArg)
     ,subRunNum(subRunNumArg)
     ,x(0.0)
@@ -81,6 +82,7 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
     ,clockCounter(w->clockCounter)
     ,preTriggerLength(w->preTriggerLength)
     ,digitizationShift(w->digitizationShift)
+    ,customOffsetClockTicks(w->customOffsetClockTicks)
     ,trace(w->trace)
     ,raw(w)
     ,x(w->x)
@@ -152,9 +154,50 @@ double WFD5Waveform::PeakToPeak()
     return maxi - mini;
 }
 
+double WFD5Waveform::PeakToPeak(int b1, int b2)
+{
+    // return the peak to peak difference between the min/max amplitude sample
+    if (b2 >= trace.size()) 
+    {
+        // throw std::runtime_error("Attempting to search outside of the bounds of the waveform")
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b2 = trace.size() - 1;
+    }
+    if (b1 < 0)
+    {
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b1 = 0;
+    }
+
+
+    short mini = *std::min_element(trace.begin() + b1, trace.begin() + b2);
+    short maxi = *std::max_element(trace.begin() + b1, trace.begin() + b2);
+    // short diff = maxi - mini;
+    // std::cout << "   calculating peak to peak: " << mini << " / " << maxi << " -> " << diff << std::endl;
+    // return std::static_cast<double>(diff);
+    return maxi - mini;
+}
+
 int WFD5Waveform::GetPeakIndex()
 {
     auto maxIt = std::max_element(trace.begin(), trace.end());
+    return std::distance(trace.begin(), maxIt);
+}
+
+int WFD5Waveform::GetPeakIndexInBounds(int b1, int b2)
+{
+    if (b2 >= trace.size()) 
+    {
+        // throw std::runtime_error("Attempting to search outside of the bounds of the waveform")
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b2 = trace.size() - 1;
+    }
+    if (b1 < 0)
+    {
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b1 = 0;
+    }
+    auto maxIt = std::max_element(trace.begin() + b1, trace.begin() + b2);
     return std::distance(trace.begin(), maxIt);
 }
 
@@ -165,4 +208,32 @@ void WFD5Waveform::InvertPulse()
     {
         trace.at(i) = trace.at(i) * -1.0;
     }
+}
+
+double WFD5Waveform::GetTime(double time, bool ct_to_ns)
+{
+    double digitization_freq_mhz = digitizationFrequency;
+    double conversion_factor = 800./digitization_freq_mhz; 
+    double custom_time_offset = customOffsetClockTicks;
+    if(ct_to_ns)
+    {
+        conversion_factor *= 1.25; 
+        custom_time_offset *= 1.25;
+    }
+    double presample_time = preTriggerLength * conversion_factor;
+    return time * conversion_factor + digitizationShift * digitization_freq_mhz/40. - presample_time + custom_time_offset;
+
+}
+
+std::vector<double> WFD5Waveform::GetTimes(bool ct_to_ns)
+{
+    // uses the digitization rate and number of presamples from the odb to get the time relative to the trigger
+    // returns time in ns if ct_to_ns is true
+    std::vector<double> times;
+    times.reserve(trace.size());
+    for (unsigned int i = 0; i < trace.size(); i++)
+    {
+        times.push_back( GetTime(i) );
+    }
+    return times;
 }

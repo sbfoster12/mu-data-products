@@ -16,10 +16,25 @@ TimeSeed::TimeSeed()
     ,is_time_calibrated(false)
     ,time_conversion_factor(1.0)
     ,time_offset(0)
+    ,seedWindow({0,0})
 {
 }
 
 TimeSeed::TimeSeed(WaveformIntegral* wf) : DataProduct()
+    ,runNum(wf->runNum)
+    ,subRunNum(wf->subRunNum)
+    ,eventNum(wf->eventNum)
+    ,waveformIndex(wf->waveformIndex)
+    ,time(0)
+    ,time_in_ct(true)
+    ,is_time_calibrated(false)
+    ,time_conversion_factor(1.0)
+    ,time_offset(0)
+{
+    inputs.push_back(wf);
+}
+
+TimeSeed::TimeSeed(WFD5Waveform* wf) : DataProduct()
     ,runNum(wf->runNum)
     ,subRunNum(wf->subRunNum)
     ,eventNum(wf->eventNum)

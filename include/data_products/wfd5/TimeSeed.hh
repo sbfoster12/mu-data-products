@@ -4,6 +4,7 @@
 // #include "DataProduct.hh"
 #include "WaveformIntegral.hh"
 #include "WFD5WaveformFit.hh"
+#include "WFD5Waveform.hh"
 #include "data_products/common/DataProduct.hh"
 
 #include "TF1.h"
@@ -19,6 +20,7 @@ namespace dataProducts {
         public:
             TimeSeed();
 
+            TimeSeed(WFD5Waveform* waveform);
             TimeSeed(WaveformIntegral* waveform);
             TimeSeed(WaveformFit* fiti);
             TimeSeed(TimeSeed* prev_fit);
@@ -46,6 +48,8 @@ namespace dataProducts {
             // TRef waveform;
             std::vector<TRef> inputs;
 
+            std::pair<int,int> seedWindow;
+
             void SetSeed(
                 double input_time, 
                 bool input_time_in_ct = true, 
@@ -68,7 +72,7 @@ namespace dataProducts {
 
             void Show() const override;
 
-            ClassDefOverride(TimeSeed,1)
+            ClassDefOverride(TimeSeed,2)
 
     };
 
