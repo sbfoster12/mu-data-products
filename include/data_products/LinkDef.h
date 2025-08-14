@@ -21,6 +21,7 @@
 #pragma link C++ class dataProducts::WFD5WaveformHeader+;
 #pragma link C++ class std::vector<dataProducts::WFD5WaveformHeader>+;
 
+#pragma link C++ class dataProducts::WaveformPeaks+;
 #pragma link C++ class dataProducts::WFD5Waveform+;
 #pragma link C++ class std::vector<dataProducts::WFD5Waveform>+;
 

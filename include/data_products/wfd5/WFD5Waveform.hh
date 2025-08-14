@@ -5,6 +5,12 @@
 
 namespace dataProducts {
 
+    struct WaveformPeaks{
+        int npeaks;
+        std::vector<int> peak_times;
+        std::vector<double> peak_amplitudes;
+    };
+
     class WFD5Waveform : public DataProduct {
 
         public:
@@ -95,6 +101,10 @@ namespace dataProducts {
             void SetSubdetector(const std::string& subdet) {
                 subdetector = subdet;
             }
+
+            WaveformPeaks FindPeaks(int averaging_window = 1, double n_stdev = 3.0, 
+                                    int samples_before = 15, int samples_after = 25, 
+                                    int dead_time = 25);
 
             void JitterCorrect(int evenOddDiff);
 
