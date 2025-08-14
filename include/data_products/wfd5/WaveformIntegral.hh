@@ -73,6 +73,9 @@ namespace dataProducts {
             TRef raw;
             TRef parent;
 
+            bool is_seeded;
+            TRef seed;
+
             //detector type and number
             std::string detectorSystem;
             std::string subdetector;

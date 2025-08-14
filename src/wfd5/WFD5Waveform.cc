@@ -53,6 +53,7 @@ WFD5Waveform::WFD5Waveform(int crateNumArg
     ,clockCounter(clockCounterArg)
     ,preTriggerLength(preTriggerLengthArg)
     ,digitizationShift(0)
+    ,customOffsetClockTicks(0.0)
     ,runNum(runNumArg)
     ,subRunNum(subRunNumArg)
     ,x(0.0)
@@ -81,6 +82,7 @@ WFD5Waveform::WFD5Waveform(WFD5Waveform* w) : DataProduct()
     ,clockCounter(w->clockCounter)
     ,preTriggerLength(w->preTriggerLength)
     ,digitizationShift(w->digitizationShift)
+    ,customOffsetClockTicks(w->customOffsetClockTicks)
     ,trace(w->trace)
     ,raw(w)
     ,x(w->x)
@@ -152,9 +154,50 @@ double WFD5Waveform::PeakToPeak()
     return maxi - mini;
 }
 
+double WFD5Waveform::PeakToPeak(int b1, int b2)
+{
+    // return the peak to peak difference between the min/max amplitude sample
+    if (b2 >= trace.size()) 
+    {
+        // throw std::runtime_error("Attempting to search outside of the bounds of the waveform")
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b2 = trace.size() - 1;
+    }
+    if (b1 < 0)
+    {
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b1 = 0;
+    }
+
+
+    short mini = *std::min_element(trace.begin() + b1, trace.begin() + b2);
+    short maxi = *std::max_element(trace.begin() + b1, trace.begin() + b2);
+    // short diff = maxi - mini;
+    // std::cout << "   calculating peak to peak: " << mini << " / " << maxi << " -> " << diff << std::endl;
+    // return std::static_cast<double>(diff);
+    return maxi - mini;
+}
+
 int WFD5Waveform::GetPeakIndex()
 {
     auto maxIt = std::max_element(trace.begin(), trace.end());
+    return std::distance(trace.begin(), maxIt);
+}
+
+int WFD5Waveform::GetPeakIndexInBounds(int b1, int b2)
+{
+    if (b2 >= trace.size()) 
+    {
+        // throw std::runtime_error("Attempting to search outside of the bounds of the waveform")
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b2 = trace.size() - 1;
+    }
+    if (b1 < 0)
+    {
+        std::cout << "Warning: attempting to search outside the bounds of the waveform, setting end to trace end" << std::endl;
+        b1 = 0;
+    }
+    auto maxIt = std::max_element(trace.begin() + b1, trace.begin() + b2);
     return std::distance(trace.begin(), maxIt);
 }
 
@@ -165,4 +208,88 @@ void WFD5Waveform::InvertPulse()
     {
         trace.at(i) = trace.at(i) * -1.0;
     }
+}
+
+double WFD5Waveform::GetTime(double time, bool ct_to_ns)
+{
+    double digitization_freq_mhz = digitizationFrequency;
+    double conversion_factor = 800./digitization_freq_mhz; 
+    double custom_time_offset = customOffsetClockTicks;
+    if(ct_to_ns)
+    {
+        conversion_factor *= 1.25; 
+        custom_time_offset *= 1.25;
+    }
+    double presample_time = preTriggerLength * conversion_factor;
+    return time * conversion_factor + digitizationShift * digitization_freq_mhz/40. - presample_time + custom_time_offset;
+
+}
+
+std::vector<double> WFD5Waveform::GetTimes(bool ct_to_ns)
+{
+    // uses the digitization rate and number of presamples from the odb to get the time relative to the trigger
+    // returns time in ns if ct_to_ns is true
+    std::vector<double> times;
+    times.reserve(trace.size());
+    for (unsigned int i = 0; i < trace.size(); i++)
+    {
+        times.push_back( GetTime(i) );
+    }
+    return times;
+}
+
+dataProducts::WaveformPeaks WFD5Waveform::FindPeaks(int averaging_window, double n_stdev, int samples_before, int samples_after, int dead_time)
+{
+    // tweaked implementation of alg 3 from here incorporating a rolling average
+    // # https://www.sciencedirect.com/science/article/pii/S0010465510004182#fg0010
+    int npeaks = 0;
+    std::vector<int> peak_times = {};
+    std::vector<double> peak_amplitudes = {};
+
+    if (averaging_window < 1)
+    {
+        std::cout << "Warning: averaging window is too small. Nonsense will ensue" << std::endl; 
+    }
+
+
+    // std::cout << "Tagging pileup above " << n_stdev << " * pedestal level of " << pedestalLevel << " +/- " << pedestalStdev << std::endl;
+    std::vector<double> result;
+    // waveform->Show();
+    float relative_prominance = pedestalStdev * n_stdev;
+    // auto data = waveform->trace;
+    for (int i = 0; i <= trace.size() - averaging_window; ++i) {
+        double sum = std::accumulate(trace.begin() + i, trace.begin() + i + averaging_window, 0.0);
+        result.push_back(1.0*sum / averaging_window - pedestalLevel);
+        // std::cout << sum << " / " << result.back() << ", ";
+    }
+    // std::cout << std::endl;
+    // std::cout << "Formed result vector with size " << result.size() << std::endl;
+    
+    float w1,w2,w3;
+    for(int i = samples_before; i < result.size() - samples_after; i++)
+    {
+        // std::cout << "Looking for peak at index " << i << std::endl;
+        w1 = result[i-samples_before];
+        w2 = result[i];
+        w3 = result[i+samples_after];
+        // std::cout << "   -> " << i-samples_before << " / " << i << " / " << i+samples_after << " / " << std::endl;
+        // std::cout << "   -> " << w1 << " / " << w2 << " / " << w3 << " / " << std::endl;
+        if( 
+            (w2-w1 > relative_prominance) &&
+            (w2-w3 > relative_prominance) &&
+            (peak_times.size() == 0 || i > peak_times.back() + dead_time)
+        )
+        {
+            // std::cout << "Found peak: " << i << " / " << result[i] << std::endl;
+            peak_times.push_back(i);
+            peak_amplitudes.push_back(result[i]);
+            npeaks++;
+        }
+    }
+
+    return {
+        npeaks,
+        peak_times,
+        peak_amplitudes
+    };
 }
