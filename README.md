@@ -1,6 +1,6 @@
 # mu-data-products
 
-A C++ library defining the persistent data products used when unpacking midas data.
+A C++ library defining the persistent data products (stored as ROOT TObjects) used when unpacking midas data.
 
 ## Requirements
 
@@ -15,7 +15,7 @@ You can either clone this repository on its own via:
 git clone https://github.com/PIONEER-Experiment/mu-data-products.git
 ``` 
 
-or you can clone the app level repository. Follow the instructions here: https://github.com/PIONEER-Experiment/mu-app
+or you can clone the app level repository. If you want to clone the app level repository, follow the instructions here: https://github.com/PIONEER-Experiment/mu-app. If you are here for analysis, you can clone this repository directly. You probably also want to clone the [mu-notebooks](https://github.com/PIONEER-Experiment/mu-notebooks) repository for a place to store your analysis notebooks. It also contains examples, plotting helper functions, etc..
 
 ## Build instructions
 
@@ -30,9 +30,9 @@ source ./scripts/setenv.sh
 
 Building the application will create ROOT dictionaries that define the data products produced when we unpack the raw midas data. No executable is created. 
 
-These data products are accesible in a ROOT macro or a jupter notebook using pyROOT. The `script/setenv.sh` script will set up the environment so the ROOT dictionaries are available in your ROOT session. For a jupyter notebook, you'll need to load the libraries with:
+These data products are accessible in a ROOT macro or a Jupyter notebook using pyROOT. The `script/setenv.sh` script will set up the environment so that the ROOT dictionaries are available in your ROOT session. For a Jupyter notebook, you'll need to load the libraries with something like:
 ```python
 import ROOT
 ROOT.gSystem.Load("/PATH/TO/PROJECT/mu-data-products/install/lib/libdata_products.dylib")
 ```
-The `.dylib` is appropriate for macOS; on Linux, it will be `.so`.
+The `.dylib` is appropriate for macOS; on Linux, it will be `.so`. See the [mu-notebooks](https://github.com/PIONEER-Experiment/mu-notebooks) repository for some example jupyter notebooks.
